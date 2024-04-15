@@ -13,4 +13,6 @@ cleaned_text = lower_case.translate(str.maketrans('','',string.punctuation)) # m
 # str2 : Specifies the list of characters with which the characters need to be replaced
 # str3 : Specifies the list of characters that need to be deleted (only relevant param in our case)
 
-print(cleaned_text)
+# Tokenize
+tokenized_words = cleaned_text.split()
+print(tokenized_words)
