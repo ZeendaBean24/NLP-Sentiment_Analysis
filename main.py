@@ -29,6 +29,7 @@ stop_words = ["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you"
               "few", "more", "most", "other", "some", "such", "no", "nor", "not", "only", "own", "same", "so", "than",
               "too", "very", "s", "t", "can", "will", "just", "don", "should", "now"]
 
+# Remove stop words
 final_words = []
 for word in tokenized_words:
     if word not in stop_words:
