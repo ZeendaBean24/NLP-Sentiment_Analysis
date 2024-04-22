@@ -4,6 +4,7 @@
 # 3) Remove punctuations like .,!? etc. 
 
 import string
+from collections import Counter
 
 text = open('read.txt', encoding='utf-8').read() # encoding - standard process
 lower_case = text.lower()
@@ -58,3 +59,5 @@ with open('emotions.txt', 'r') as file:
             emotion_list.append(emotion)
 
 print(emotion_list)
+w = Counter(emotion_list)
+print(w)
