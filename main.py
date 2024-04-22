@@ -15,7 +15,7 @@ cleaned_text = lower_case.translate(str.maketrans('','',string.punctuation)) # m
 
 # Tokenize
 tokenized_words = cleaned_text.split()
-print(tokenized_words)
+# print(tokenized_words)
 
 # Stop Words
 stop_words = ["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", "yours", "yourself",
@@ -35,7 +35,7 @@ for word in tokenized_words:
     if word not in stop_words:
         final_words.append(word)
 
-print(final_words)
+# print(final_words)
 
 # NLP Emotion Algorithm
 # 1) Check if the word in the final word list is also present in emotion.txt
