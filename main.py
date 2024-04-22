@@ -35,6 +35,8 @@ for word in tokenized_words:
     if word not in stop_words:
         final_words.append(word)
 
+# print(final_words)
+
 # NLP Emotion Algorithm
 # 1) Check if the word in the final word list is also present in emotion.txt
 #   - Open the emotion file
@@ -43,3 +45,8 @@ for word in tokenized_words:
 
 # 2) If word is present -> Add the emotion to emotion_list
 # 3) Finally count each emotion in the emotion list
+
+with open('emotions.txt', 'r') as file:
+    for line in file:
+        clear_line = line.replace('\n', '').replace(', ', '').replace("'", '') # Replace new lines, quotes, commas with empty characters 'nothing'
+        print(clear_line)
