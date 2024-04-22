@@ -15,7 +15,7 @@ cleaned_text = lower_case.translate(str.maketrans('','',string.punctuation)) # m
 
 # Tokenize
 tokenized_words = cleaned_text.split()
-# print(tokenized_words)
+print(tokenized_words)
 
 # Stop Words
 stop_words = ["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", "yours", "yourself",
@@ -35,7 +35,7 @@ for word in tokenized_words:
     if word not in stop_words:
         final_words.append(word)
 
-# print(final_words)
+print(final_words)
 
 # NLP Emotion Algorithm
 # 1) Check if the word in the final word list is also present in emotion.txt
@@ -46,9 +46,15 @@ for word in tokenized_words:
 # 2) If word is present -> Add the emotion to emotion_list
 # 3) Finally count each emotion in the emotion list
 
+emotion_list = []
 with open('emotions.txt', 'r') as file:
     for line in file:
         clear_line = line.replace("n", '').replace(",", '').replace("'", '').strip() # Replace new lines, quotes, commas with empty characters 'nothing'
         # print(clear_line)
         word, emotion = clear_line.split(':') # Looks for character of colon, anything before colon is stored in word, anything after colon is stored in emotion
-        print("Word : " + word + " " + " Emotion: " + emotion)
+        # print("Word : " + word + " " + " Emotion: " + emotion)
+
+        if word in final_words: 
+            emotion_list.append(emotion)
+
+print(emotion_list)
