@@ -64,7 +64,8 @@ w = Counter(emotion_list)
 print(w)
 
 # Print counter using matplotlib graph
-
-plt.bar(w.keys(), w.values())
+fig, ax1 = plt.subplots() 
+ax1.bar(w.keys(), w.values())
+fig.autofmt_xdate() # automatic figure update
 plt.savefig('graph.png')
 plt.show()
