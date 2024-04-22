@@ -48,5 +48,7 @@ for word in tokenized_words:
 
 with open('emotions.txt', 'r') as file:
     for line in file:
-        clear_line = line.replace('\n', '').replace(', ', '').replace("'", '') # Replace new lines, quotes, commas with empty characters 'nothing'
-        print(clear_line)
+        clear_line = line.replace("n", '').replace(",", '').replace("'", '').strip() # Replace new lines, quotes, commas with empty characters 'nothing'
+        # print(clear_line)
+        word, emotion = clear_line.split(':') # Looks for character of colon, anything before colon is stored in word, anything after colon is stored in emotion
+        print("Word : " + word + " " + " Emotion: " + emotion)
