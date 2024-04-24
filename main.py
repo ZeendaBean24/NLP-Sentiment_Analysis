@@ -4,7 +4,8 @@
 # 3) Remove punctuations like .,!? etc. 
 
 import string
-from collections import Counter
+from collections import Counter 
+from nltk.tokenize import word_tokenize
 import matplotlib.pyplot as plt
 
 text = open('read.txt', encoding='utf-8').read() # encoding - standard process
@@ -16,8 +17,8 @@ cleaned_text = lower_case.translate(str.maketrans('','',string.punctuation)) # m
 # str3 : Specifies the list of characters that need to be deleted (only relevant param in our case)
 
 # Tokenize
-tokenized_words = cleaned_text.split()
-# print(tokenized_words)
+# tokenized_words = cleaned_text.split()
+tokenized_words = word_tokenize(cleaned_text, "english") #.split takes a lot more time
 
 # Stop Words
 stop_words = ["i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", "yours", "yourself",
