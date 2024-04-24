@@ -24,7 +24,7 @@ tokenized_words = word_tokenize(cleaned_text, "english") #.split takes a lot mor
 # Remove stop words
 final_words = []
 for word in tokenized_words:
-    if word not in stopwords('english'): # can choose the language
+    if word not in stopwords.words('english'): # can choose the language
         final_words.append(word)
 
 # print(final_words)
