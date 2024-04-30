@@ -7,6 +7,7 @@ import string
 from collections import Counter 
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import matplotlib.pyplot as plt
 
 text = open('read.txt', encoding='utf-8').read() # encoding - standard process
@@ -52,6 +53,12 @@ with open('emotions.txt', 'r') as file:
 print(emotion_list)
 w = Counter(emotion_list)
 print(w)
+
+def sentiment_analyse(sentiment_text):
+    score = SentimentIntensityAnalyzer().polarity_scores(sentiment_text)
+    print(score) 
+
+sentiment_analyse(cleaned_text)
 
 # Print counter using matplotlib graph
 fig, ax1 = plt.subplots() 
