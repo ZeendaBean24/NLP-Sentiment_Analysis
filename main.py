@@ -56,13 +56,21 @@ print(w)
 
 def sentiment_analyse(sentiment_text):
     score = SentimentIntensityAnalyzer().polarity_scores(sentiment_text)
-    print(score) 
-
+    # print(score) 
+    neg = score['neg']
+    pos = score['pos']
+    if neg > pos:
+        print("Negative Sentiment")
+    elif pos > neg:
+        print("Positive Sentiment")
+    else:
+        print("Neutral Vibe.")
+        
 sentiment_analyse(cleaned_text)
 
 # Print counter using matplotlib graph
-fig, ax1 = plt.subplots() 
-ax1.bar(w.keys(), w.values())
-fig.autofmt_xdate() # automatic figure update
-plt.savefig('graph.png')
-plt.show()
+# fig, ax1 = plt.subplots() 
+# ax1.bar(w.keys(), w.values())
+# fig.autofmt_xdate() # automatic figure update
+# plt.savefig('graph.png')
+# plt.show()
