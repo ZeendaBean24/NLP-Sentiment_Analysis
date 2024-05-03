@@ -74,3 +74,5 @@ ax1.bar(w.keys(), w.values())
 fig.autofmt_xdate() # automatic figure update
 plt.savefig('graph.png')
 plt.show()
+
+#TODO: books extraction, other APIs, news, BERT model, audio model (hume)
