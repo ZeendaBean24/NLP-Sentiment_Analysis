@@ -1,5 +1,6 @@
 import requests, os, json
 from dotenv import load_dotenv
+from bs4 import BeautifulSoup
 
 load_dotenv()
 
@@ -12,6 +13,6 @@ URL = f"https://api.nytimes.com/svc/books/v3/reviews.json?author={author}&api-ke
 response = requests.get(url = URL)
 data = response.json()
 
-review_urls = [result['url'] for result in data['results'] if 'url' in result]
+review_urls = [result['summary'] for result in data['results'] if 'summary' in result and result['summary']]
 
 print(review_urls)
