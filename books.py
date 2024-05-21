@@ -1,4 +1,4 @@
-import requests, os, json
+import requests, os, json, random
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 
@@ -20,4 +20,15 @@ author_name = input("Enter the author's name: ")
 reviews = get_author_book_reviews(author_name)
 # print(review_urls)
 
+# Select a random review from the list
+if reviews: 
+    random_review = random.choice(reviews)
+    print("------------------ \n")
+    print("Randomly selected review: \n")
+    print(f"Summary: {random_review[0]}")
+    print(f"Book Title: {random_review[1]}")
+    print(f"Author: {random_review[2]}")
+    print("\n------------------")
+else: # If the query has no returns
+    print("No reviews found.")
 
