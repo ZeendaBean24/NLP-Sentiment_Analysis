@@ -15,4 +15,6 @@ data = response.json()
 
 review_urls = [[result['summary'], result['book_title'], result['book_author']] for result in data['results'] if 'summary' in result and result['summary']]
 
-print(review_urls)
+# print(review_urls)
+
+
