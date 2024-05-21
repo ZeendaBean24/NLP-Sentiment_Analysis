@@ -50,21 +50,22 @@ with open('emotions.txt', 'r') as file:
         if word in final_words: 
             emotion_list.append(emotion)
 
-print(emotion_list)
+print(f"------------------ \n \nAll emotions detected: {emotion_list}")
 w = Counter(emotion_list)
-print(w)
+print(f"\nCounter: {w} \n")
 
 def sentiment_analyse(sentiment_text):
     score = SentimentIntensityAnalyzer().polarity_scores(sentiment_text)
-    print(score) 
+    print(f"Overall score: {score} \n") 
     neg = score['neg']
     pos = score['pos']
     if neg > pos:
-        print("Negative Sentiment")
+        print("Overall: Negative Sentiment")
     elif pos > neg:
-        print("Positive Sentiment")
+        print("Overall: Positive Sentiment")
     else:
-        print("Neutral Vibe.")
+        print("Overall: Neutral Sentiment.")
+    print("\n------------------ \n")
 
 sentiment_analyse(cleaned_text)
 
