@@ -70,9 +70,15 @@ def sentiment_analyse(sentiment_text):
 sentiment_analyse(cleaned_text)
 
 # Print counter using matplotlib graph
-fig, ax1 = plt.subplots() 
-ax1.bar(w.keys(), w.values())
-fig.autofmt_xdate() # automatic figure update
+fig, ax1 = plt.subplots()
+ax1.bar(w.keys(), w.values(), color='skyblue')
+ax1.set_title('Count of Sentiments in the Text', fontsize=14, fontweight='bold')
+ax1.set_xlabel('Sentiments', fontsize=12, fontweight='bold')
+ax1.set_ylabel('Count', fontsize=12, fontweight='bold')
+ax1.tick_params(axis='x', rotation=45)
+ax1.tick_params(axis='both', which='major', labelsize=10)
+plt.grid(axis='y', linestyle='--', linewidth=0.7)
+fig.tight_layout()
 plt.savefig('graph.png')
 plt.show()
 
