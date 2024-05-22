@@ -23,7 +23,7 @@ def get_movie_review(query):
         print("No results found for the query.")
         return None
     
-    movie = random.choice(search_data['results'])
+    movie = search_data['results'][0]  # Use the first result for the most relevant
     movie_id = movie['id']
     movie_title = movie['title']
     
