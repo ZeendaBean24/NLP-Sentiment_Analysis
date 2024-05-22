@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&display=swap');
+
 .nlp-container {
   position: relative;
   width: 100%;
@@ -39,22 +41,64 @@
 .end-node {
   background-color: #dc3545; /* Red color for the END node */
 }
-  
-  .n1 { top: 400px; left: 150px; }
-  .n2 { top: 150px; left: 175px; }
-  .n3 { top: 425px; left: 400px; }
-  .n4 { top: 150px; left: 400px; }
-  
-  .l1 { top: 125px; left: 550px; }
-  .l2 { top: 425px; left: 575px; }
-  .l3 { top: 425px; left: 750px; }
-  
-  .p1 { top: 400px; left: 900px; }
-  .p2 { top: 275px; left: 925px; }
-  .p3 { top: 225px; left: 1100px; }
-  .p4 { top: 150px; left: 925px; }
-  
-  .exclamation1 { top: 100px; left: 1200px; }
-  .exclamation2 { top: 325px; left: 1225px; }
-  .exclamation3 { top: 425px; left: 1200px; }
-  
+
+.n1 { top: 400px; left: 150px; }
+.n2 { top: 150px; left: 175px; }
+.n3 { top: 425px; left: 370px; }
+.n4 { top: 150px; left: 370px; }
+
+.l1 { top: 125px; left: 550px; }
+.l2 { top: 425px; left: 575px; }
+.l3 { top: 425px; left: 725px; }
+
+.p1 { top: 400px; left: 900px; }
+.p2 { top: 310px; left: 925px; }
+.p3 { top: 225px; left: 1085px; }
+.p4 { top: 150px; left: 925px; }
+
+.exclamation1 { top: 125px; left: 1200px; }
+.exclamation2 { top: 335px; left: 1225px; }
+.exclamation3 { top: 392px; left: 1200px; }
+
+.arrow {
+  position: absolute;
+  transition: transform 0.3s;
+}
+
+.letter {
+  font-family: "Platypi", serif;
+  font-optical-sizing: auto;
+  font-weight: 750;
+  font-style: normal;
+  font-size: 450px;
+}
+
+.letter.n {
+  position: absolute;
+  left: 290px;  
+  top: 275px;   
+  transform: translate(-50%, -50%);  
+}
+
+.letter.l {
+  position: absolute;
+  left: 662px; 
+  top: 275px;   
+  transform: translate(-50%, -50%);
+}
+
+.letter.p {
+  position: absolute;
+  left: 1020px; 
+  top: 275px;   
+  transform: translate(-50%, -50%);
+}
+
+.letter.ex {
+  position: absolute;
+  left: 1250px;
+  top: 275px;   
+  transform: translate(-50%, -50%);
+}
+
+
