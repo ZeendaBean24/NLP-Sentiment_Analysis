@@ -3,7 +3,6 @@ import os
 import random
 import string
 from dotenv import load_dotenv
-from collections import Counter
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
@@ -55,23 +54,28 @@ def process_text(text):
 def analyze_emotions_transformers(text):
     emotion_analyzer = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", top_k=None)
     
-    # Truncate text to the first 512 tokens
+    # Truncate text to the first 256 tokens (512 is max, to be safe)
     tokenized_text = text.split()
-    truncated_text = ' '.join(tokenized_text[:512])
+    truncated_text = ' '.join(tokenized_text[:375])
     
     emotions = emotion_analyzer(truncated_text)
     
-    # Flatten the results and count the occurrences of each emotion
-    emotion_counts = Counter()
+    # Flatten the results and sum the scores for each emotion
+    emotion_counts = {}
     for emotion_set in emotions:
         for emotion in emotion_set:
-            emotion_counts[emotion['label']] += emotion['score']
+            label = emotion['label']
+            score = emotion['score']
+            if label in emotion_counts:
+                emotion_counts[label] += score
+            else:
+                emotion_counts[label] = score
     
     return emotion_counts
 
 def sentiment_analyse(sentiment_text):
     score = SentimentIntensityAnalyzer().polarity_scores(sentiment_text)
-    print(f"Overall score: {score}\n") 
+    print(f"\n\n**NLTK Sentiment Analysis**\nOverall score: {score}") 
     neg = score['neg']
     pos = score['pos']
     if neg > pos:
@@ -105,8 +109,9 @@ if review_text:
     # Analyze emotions using Hugging Face Transformers
     emotion_counts = analyze_emotions_transformers(review_text)
     
-    print(f"------------------ \n\nAll emotions detected: {list(emotion_counts.elements())}")
-    print(f"\nCounter: {emotion_counts}\n")
+    print("------------------ \n\n**HuggingFace Model**\nAll emotions detected with their scores:")
+    for emotion, score in emotion_counts.items():
+        print(f"{emotion}: {score:.4f}")
     
     # Perform sentiment analysis using VADER
     sentiment_analyse(review_text)
