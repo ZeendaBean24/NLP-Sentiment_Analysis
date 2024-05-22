@@ -20,18 +20,19 @@
     transform: scale(1.2);
     background-color: #007BFF;
   }
+  z-index: 2;
 }
 
-.main-node, .end-node {
-  width: 100px;
-  height: 100px;
+.main-node{
+  width: 75px;
+  height: 75px;
   background-color: #004085;
   color: white;
   font-size: 40px;
   border-radius: 50%;
 }
 
-.minor-node {
+.minor-node, .end-node {
   width: 50px;
   height: 50px;
   background-color: #6c757d;
@@ -43,22 +44,22 @@
 }
 
 .n1 { top: 400px; left: 150px; }
-.n2 { top: 150px; left: 175px; }
-.n3 { top: 425px; left: 370px; }
-.n4 { top: 150px; left: 370px; }
+.n2 { top: 168px; left: 175px; }
+.n3 { top: 410px; left: 360px; }
+.n4 { top: 165px; left: 370px; }
 
-.l1 { top: 125px; left: 550px; }
-.l2 { top: 425px; left: 575px; }
-.l3 { top: 425px; left: 725px; }
+.l1 { top: 160px; left: 570px; }
+.l2 { top: 410px; left: 575px; }
+.l3 { top: 415px; left: 730px; }
 
-.p1 { top: 400px; left: 900px; }
+.p1 { top: 390px; left: 912px; }
 .p2 { top: 310px; left: 925px; }
 .p3 { top: 225px; left: 1085px; }
-.p4 { top: 150px; left: 925px; }
+.p4 { top: 170px; left: 920px; }
 
-.exclamation1 { top: 125px; left: 1200px; }
-.exclamation2 { top: 335px; left: 1225px; }
-.exclamation3 { top: 392px; left: 1200px; }
+.exclamation1 { top: 165px; left: 1210px; }
+.exclamation2 { top: 315px; left: 1225px; }
+.exclamation3 { top: 410px; left: 1225px; }
 
 .arrow {
   position: absolute;
@@ -71,6 +72,7 @@
   font-weight: 750;
   font-style: normal;
   font-size: 450px;
+  z-index: 1;
 }
 
 .letter.n {
