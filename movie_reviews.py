@@ -47,5 +47,8 @@ def get_movie_review(query):
     return review_text
 
 # User input
-query = input("Enter the movie name: ")
+query = input("\n(Search online to make sure the EXACT name so the query search is correct) \n\nEnter the movie name: ")
 review_text = get_movie_review(query)
+
+#TODO: How actual rating compares to the NLP.
+#TODO: Less strict on query search
