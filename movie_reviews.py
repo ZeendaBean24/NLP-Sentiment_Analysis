@@ -53,8 +53,13 @@ def process_text(text):
     return final_words
 
 def analyze_emotions_transformers(text):
-    emotion_analyzer = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", return_all_scores=True)
-    emotions = emotion_analyzer(text)
+    emotion_analyzer = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", top_k=None)
+    
+    # Truncate text to the first 512 tokens
+    tokenized_text = text.split()
+    truncated_text = ' '.join(tokenized_text[:512])
+    
+    emotions = emotion_analyzer(truncated_text)
     
     # Flatten the results and count the occurrences of each emotion
     emotion_counts = Counter()
@@ -87,7 +92,6 @@ def plot_emotions(emotion_counts):
     ax1.tick_params(axis='both', which='major', labelsize=10)
     plt.grid(axis='y', linestyle='--', linewidth=0.7)
     fig.tight_layout()
-    # plt.savefig('graph.png')
     plt.show()
 
 # ------------ Implementation of Functions ------------
