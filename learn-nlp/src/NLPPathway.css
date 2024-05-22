@@ -1,18 +1,52 @@
 .nlp-container {
-    font-size: 48px;
-    font-weight: bold;
+    position: relative;
+    width: 100%;
+    height: 600px;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-top: 50px;
+    align-items: center;
   }
   
-  .nlp-letter, .nlp-exclamation {
-    cursor: pointer;
+  .node {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: transform 0.3s ease-in-out;
+    cursor: pointer;
   }
   
-  .nlp-letter:hover, .nlp-exclamation:hover {
-    transform: scale(1.1);
-    color: #007BFF; /* Bootstrap primary blue for example */
+  .main-node {
+    width: 100px;
+    height: 100px;
+    background-color: #004085;
+    color: white;
+    font-size: 40px;
+    border-radius: 50%;
   }
+  
+  .minor-node {
+    width: 50px;
+    height: 50px;
+    background-color: #6c757d;
+    border-radius: 50%;
+  }
+  
+  .n1 { top: 400px; left: 150px; }
+  .n2 { top: 150px; left: 175px; }
+  .n3 { top: 425px; left: 400px; }
+  .n4 { top: 150px; left: 400px; }
+  
+  .l1 { top: 125px; left: 550px; }
+  .l2 { top: 425px; left: 575px; }
+  .l3 { top: 425px; left: 750px; }
+  
+  .p1 { top: 400px; left: 900px; }
+  .p2 { top: 275px; left: 925px; }
+  .p3 { top: 225px; left: 1100px; }
+  .p4 { top: 150px; left: 925px; }
+  
+  .exclamation1 { top: 100px; left: 1200px; }
+  .exclamation2 { top: 350px; left: 1225px; }
+  .exclamation3 { top: 425px; left: 1225px; }
+  
