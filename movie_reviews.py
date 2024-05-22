@@ -8,6 +8,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import matplotlib.pyplot as plt
+from transformers import pipeline
 
 # Load API key from .env file
 load_dotenv()
@@ -51,16 +52,17 @@ def process_text(text):
     
     return final_words
 
-def analyze_emotions(final_words):
-    emotion_list = []
-    with open('emotions.txt', 'r') as file:
-        for line in file:
-            clear_line = line.replace("n", '').replace(",", '').replace("'", '').strip()
-            word, emotion = clear_line.split(':')
-            if word in final_words:
-                emotion_list.append(emotion)
+def analyze_emotions_transformers(text):
+    emotion_analyzer = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", return_all_scores=True)
+    emotions = emotion_analyzer(text)
     
-    return Counter(emotion_list)
+    # Flatten the results and count the occurrences of each emotion
+    emotion_counts = Counter()
+    for emotion_set in emotions:
+        for emotion in emotion_set:
+            emotion_counts[emotion['label']] += emotion['score']
+    
+    return emotion_counts
 
 def sentiment_analyse(sentiment_text):
     score = SentimentIntensityAnalyzer().polarity_scores(sentiment_text)
@@ -78,8 +80,8 @@ def sentiment_analyse(sentiment_text):
 def plot_emotions(emotion_counts):
     fig, ax1 = plt.subplots()
     ax1.bar(emotion_counts.keys(), emotion_counts.values(), color='skyblue')
-    ax1.set_title('Count of Sentiments in the Text', fontsize=14, fontweight='bold')
-    ax1.set_xlabel('Sentiments', fontsize=12, fontweight='bold')
+    ax1.set_title('Count of Emotions in the Text', fontsize=14, fontweight='bold')
+    ax1.set_xlabel('Emotions', fontsize=12, fontweight='bold')
     ax1.set_ylabel('Count', fontsize=12, fontweight='bold')
     ax1.tick_params(axis='x', rotation=45)
     ax1.tick_params(axis='both', which='major', labelsize=10)
@@ -96,20 +98,19 @@ if review_text:
     # Process the review text for NLP
     final_words = process_text(review_text)
     
-    # Analyze emotions
-    emotion_counts = analyze_emotions(final_words)
+    # Analyze emotions using Hugging Face Transformers
+    emotion_counts = analyze_emotions_transformers(review_text)
     
     print(f"------------------ \n\nAll emotions detected: {list(emotion_counts.elements())}")
     print(f"\nCounter: {emotion_counts}\n")
     
-    # Perform sentiment analysis
+    # Perform sentiment analysis using VADER
     sentiment_analyse(review_text)
     
     # Plot emotions
     plot_emotions(emotion_counts)
 else:
     print("No reviews found.")
-
 
 #TODO: How actual rating compares to the NLP.
 #TODO: Less strict on query search
