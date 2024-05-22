@@ -24,7 +24,7 @@ function NLPPathway() {
       {/* ! Nodes */}
       <div className="node main-node exclamation1">!</div>
       <div className="node minor-node exclamation2"></div>
-      <div className="node minor-node exclamation3"></div>
+      <div className="node end-node exclamation3"></div>
     </div>
   );
 }
