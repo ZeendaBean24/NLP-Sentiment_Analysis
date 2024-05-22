@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&display=swap');
 
+:root {
+  --bg: #062c43;
+  --secondary: #054569;
+  --primary: #5591a9;
+  --accent: #9ccddc;
+  --text: #ced7e0;
+}
+
 .nlp-container {
   position: relative;
   width: 100%;
