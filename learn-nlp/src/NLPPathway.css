@@ -1,0 +1,18 @@
+.nlp-container {
+    font-size: 48px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 50px;
+  }
+  
+  .nlp-letter, .nlp-exclamation {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .nlp-letter:hover, .nlp-exclamation:hover {
+    transform: scale(1.1);
+    color: #007BFF; /* Bootstrap primary blue for example */
+  }
