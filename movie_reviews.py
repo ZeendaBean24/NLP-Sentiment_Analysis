@@ -1,44 +1,40 @@
 import requests
-import random
 import os
+import random
+import string
 from dotenv import load_dotenv
+from collections import Counter
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+import matplotlib.pyplot as plt
 
 # Load API key from .env file
 load_dotenv()
 TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 
 def get_movie_review(query):
-    # Replace spaces with '+'
     query = query.replace(" ", "+")
-    
-    # Define the search URL
     search_url = f"https://api.themoviedb.org/3/search/movie?api_key={TMDB_API_KEY}&query={query}"
-    
-    # Make the API call to search for movies
     search_response = requests.get(search_url)
     search_data = search_response.json()
     
     if not search_data['results']:
         print("No results found for the query.")
         return None
-
-    # Randomly select a movie from the search results
+    
     movie = random.choice(search_data['results'])
     movie_id = movie['id']
     movie_title = movie['title']
     
-    # Define the review URL
     review_url = f"https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key={TMDB_API_KEY}"
-    
-    # Make the API call to get reviews
     review_response = requests.get(review_url)
     review_data = review_response.json()
     
     if not review_data['results']:
         print(f"No reviews found for the movie '{movie_title}'.")
         return None
-
-    # Randomly select a review from the reviews
+    
     review = random.choice(review_data['results'])
     review_text = review['content']
     
@@ -46,9 +42,75 @@ def get_movie_review(query):
     print(f"Review: {review_text}")
     return review_text
 
-# User input
-query = input("\n(Search online to make sure the EXACT name so the query search is correct) \n\nEnter the movie name: ")
-review_text = get_movie_review(query)
+def process_text(text):
+    lower_case = text.lower()
+    cleaned_text = lower_case.translate(str.maketrans('', '', string.punctuation))
+    tokenized_words = word_tokenize(cleaned_text, "english")
+    
+    final_words = [word for word in tokenized_words if word not in stopwords.words('english')]
+    
+    return final_words
+
+def analyze_emotions(final_words):
+    emotion_list = []
+    with open('emotions.txt', 'r') as file:
+        for line in file:
+            clear_line = line.replace("n", '').replace(",", '').replace("'", '').strip()
+            word, emotion = clear_line.split(':')
+            if word in final_words:
+                emotion_list.append(emotion)
+    
+    return Counter(emotion_list)
+
+def sentiment_analyse(sentiment_text):
+    score = SentimentIntensityAnalyzer().polarity_scores(sentiment_text)
+    print(f"Overall score: {score}\n") 
+    neg = score['neg']
+    pos = score['pos']
+    if neg > pos:
+        print("Overall: Negative Sentiment")
+    elif pos > neg:
+        print("Overall: Positive Sentiment")
+    else:
+        print("Overall: Neutral Sentiment.")
+    print("\n------------------\n")
+
+def plot_emotions(emotion_counts):
+    fig, ax1 = plt.subplots()
+    ax1.bar(emotion_counts.keys(), emotion_counts.values(), color='skyblue')
+    ax1.set_title('Count of Sentiments in the Text', fontsize=14, fontweight='bold')
+    ax1.set_xlabel('Sentiments', fontsize=12, fontweight='bold')
+    ax1.set_ylabel('Count', fontsize=12, fontweight='bold')
+    ax1.tick_params(axis='x', rotation=45)
+    ax1.tick_params(axis='both', which='major', labelsize=10)
+    plt.grid(axis='y', linestyle='--', linewidth=0.7)
+    fig.tight_layout()
+    # plt.savefig('graph.png')
+    plt.show()
+
+# ------------ Implementation of Functions ------------
+movie_query = input("\n(Search online to make sure the EXACT name so the query search is correct) \n\nEnter the movie name: ")
+review_text = get_movie_review(movie_query)
+
+if review_text:
+    # Process the review text for NLP
+    final_words = process_text(review_text)
+    
+    # Analyze emotions
+    emotion_counts = analyze_emotions(final_words)
+    
+    print(f"------------------ \n\nAll emotions detected: {list(emotion_counts.elements())}")
+    print(f"\nCounter: {emotion_counts}\n")
+    
+    # Perform sentiment analysis
+    sentiment_analyse(review_text)
+    
+    # Plot emotions
+    plot_emotions(emotion_counts)
+else:
+    print("No reviews found.")
+
 
 #TODO: How actual rating compares to the NLP.
 #TODO: Less strict on query search
+#TODO: Only query words that are long
