@@ -630,7 +630,6 @@ function PageOne() {
         </button>
         {isOpen && (
           <div className="collapsible-content" style={{ marginTop: '10px', position: 'relative' }}>
-            <p className="description">Copy and paste the following content into a file named <strong>emotions.txt</strong>:</p>
             <SyntaxHighlighter language="text" style={ solarizedlight }>
               { emotionsText }
             </SyntaxHighlighter>
