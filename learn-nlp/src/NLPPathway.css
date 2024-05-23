@@ -752,6 +752,25 @@
   height: 150px;
   fill: var(--flame-primary);
   transform: translate(-50%, -50%);
+  animation: flicker 0.5s infinite alternate, glow 1.5s infinite;
+}
+
+@keyframes flicker {
+  0% {
+    fill: var(--flame-primary);
+  }
+  100% {
+    fill: var(--flame-secondary);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px var(--flame-secondary));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px var(--flame-primary));
+  }
 }
 
 .fuel.n {
@@ -772,13 +791,4 @@
 .fuel.ex {
   left: 1250px;
   top: 575px;
-}
-
-@keyframes flicker {
-  0% {
-    fill: var(--flame-primary);
-  }
-  100% {
-    fill: var(--flame-secondary);
-  }
 }
