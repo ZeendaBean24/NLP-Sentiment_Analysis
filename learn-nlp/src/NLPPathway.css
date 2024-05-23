@@ -795,20 +795,24 @@
 .fuel.n {
   left: 290px;
   top: 575px;
+  animation-delay: 0s;
 }
 
 .fuel.l {
   left: 662px;
   top: 575px;
+  animation-delay: 0.5s;
 }
 
 .fuel.p {
   left: 1000px;
   top: 575px;
+  animation-delay: 1s;
 }
 
 .fuel.ex {
   left: 1250px;
   top: 575px;
+  animation-delay: 1.5s;
 }
 
