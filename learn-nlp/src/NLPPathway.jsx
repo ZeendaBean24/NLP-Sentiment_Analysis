@@ -28,20 +28,20 @@ function NLPPathway() {
         <div className="letter n">N</div>
         
         {/* L Nodes */}
-        <div className="node main-node l1" onClick={() => handleNavigate('/l1')}>2</div>
+        <div className="node main-node l1" onClick={() => handleNavigate('/l2')}>2</div>
         <div className="node minor-node l2" onClick={() => handleNavigate('/l2.1')}>2.1</div>
         <div className="node minor-node l3" onClick={() => handleNavigate('/l2.2')}>2.2</div>
         <div className="letter l">L</div>
         
         {/* P Nodes */}
-        <div className="node main-node p1" onClick={() => handleNavigate('/p1')}>3</div>
+        <div className="node main-node p1" onClick={() => handleNavigate('/p3')}>3</div>
         <div className="node minor-node p2" onClick={() => handleNavigate('/p3.1')}>3.1</div>
         <div className="node minor-node p3" onClick={() => handleNavigate('/p3.2')}>3.2</div>
         <div className="node minor-node p4" onClick={() => handleNavigate('/p3.3')}>3.3</div>
         <div className="letter p">P</div>
         
         {/* ! Nodes */}
-        <div className="node main-node exclamation1" onClick={() => handleNavigate('/ex1')}>4</div>
+        <div className="node main-node exclamation1" onClick={() => handleNavigate('/ex4')}>4</div>
         <div className="node minor-node exclamation2" onClick={() => handleNavigate('/ex4.1')}>4.1</div>
         <div className="node end-node exclamation3" onClick={() => handleNavigate('/end')}>4.2</div>
         <div className="letter ex">!</div>
