@@ -752,11 +752,12 @@
   height: 150px;
   fill: var(--flame-primary);
   transform: translate(-50%, -50%);
-  animation: flicker 0.5s infinite alternate, glow 1.5s infinite;
+  animation: flicker 1.5s infinite alternate, glow 1.5s infinite;
+  z-index: 2; /* Ensure the flames are above the stars */
 }
 
 @keyframes flicker {
-  0% {
+  0%, 70% {
     fill: var(--flame-primary);
   }
   100% {
@@ -792,3 +793,4 @@
   left: 1250px;
   top: 575px;
 }
+
