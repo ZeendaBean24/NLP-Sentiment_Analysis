@@ -2,8 +2,15 @@ import React, {useState} from 'react';
 import './styles.css';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { useNavigate } from 'react-router-dom';
 
 function PageOne() {
+  let navigate = useNavigate();
+
+  function handleNavigate(path) {
+    navigate(path);
+  }
+
   const copyToClipboard = (text) => {
     if (navigator.clipboard) { // Modern async clipboard API
       navigator.clipboard.writeText(text).then(() => {
@@ -623,6 +630,7 @@ function PageOne() {
         </button>
         {isOpen && (
           <div className="collapsible-content" style={{ marginTop: '10px', position: 'relative' }}>
+            <p className="description">Copy and paste the following content into a file named <strong>emotions.txt</strong>:</p>
             <SyntaxHighlighter language="text" style={ solarizedlight }>
               { emotionsText }
             </SyntaxHighlighter>
@@ -632,6 +640,10 @@ function PageOne() {
           </div>
         )}
       </div>
+      <hr></hr>
+      <button className="back-button" style={{ marginTop: '20px', cursor: 'pointer' }} onClick={() => handleNavigate('/')}>
+        Back
+      </button>
     </div>
   );
 }
