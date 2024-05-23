@@ -6,6 +6,8 @@
   --primary: #5591a9;
   --accent: #9ccddc;
   --text: #ced7e0;
+  --flame-primary: #ff4500;
+  --flame-secondary: #ffa500;
 }
 
 /* .App-header {
@@ -744,3 +746,39 @@
 }
 
 
+.fuel {
+  position: absolute;
+  width: auto;
+  height: 150px;
+  fill: var(--flame-primary);
+  transform: translate(-50%, -50%);
+}
+
+.fuel.n {
+  left: 290px;
+  top: 650px;
+}
+
+.fuel.l {
+  left: 662px;
+  top: 650px;
+}
+
+.fuel.p {
+  left: 1020px;
+  top: 650px;
+}
+
+.fuel.ex {
+  left: 1250px;
+  top: 650px;
+}
+
+@keyframes flicker {
+  0% {
+    fill: var(--flame-primary);
+  }
+  100% {
+    fill: var(--flame-secondary);
+  }
+}
