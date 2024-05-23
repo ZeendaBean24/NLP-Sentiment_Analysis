@@ -574,56 +574,59 @@ function PageOne() {
   `
 
   return (
-    <div>
-      <h1>1 - What is NLP? (Setup, Installation) </h1>
-      <p>Natural language processing, or NLP, combines computational linguistics—rule-based modeling of human language—with statistical and machine learning models to enable computers and digital devices to recognize, understand and generate text and speech. (Source: ibm) For our case, we will be focused on <strong>text-based NLP</strong> and deal with <strong>Sentiment Analysis</strong>.</p>
-      <p>If this is a foreign concept to you: DO NOT WORRY! These series of modules will guide you to become an NLP expert.</p>
+    <div className="page">
+      <h1 className="heading">1 - What is NLP? (Setup, Installation) </h1>
+        <hr></hr>
+      <div className="section-divider">
+        <p className="description">Natural language processing, or NLP, combines computational linguistics—rule-based modeling of human language—with statistical and machine learning models to enable computers and digital devices to recognize, understand and generate text and speech. (Source: IBM) For our case, we will be focused on <strong>text-based NLP</strong> and deal with <strong>Sentiment Analysis</strong>.</p>
+        <p className="description">If this is a foreign concept to you: DO NOT WORRY! These series of modules will guide you to become an NLP expert.</p>
+      </div>
       <hr></hr>  
-      <p>Before we start analyzing text, you need to set up your environment by installing some necessary Python libraries. These libraries will help us process and analyze the text.</p>
-      <h2>Installation Commands</h2>
-      <div style={{ position: 'relative' }}>
-        <SyntaxHighlighter language="bash" style={ solarizedlight }>
-          {installCommands}
-        </SyntaxHighlighter>
-        <button onClick={() => copyToClipboard(installCommands)} style={{ position: 'absolute', top: '5px', right: '5px' }}>
-          Copy
-        </button>
+        <div className="section-divider">
+          <h2 className="subheading">Installation Commands</h2>
+          <p className="description">Before we start analyzing text, you need to set up your environment by installing some necessary Python libraries. These libraries will help us process and analyze the text.</p>
+          <div className="code-container" style={{ position: 'relative' }}>
+            <SyntaxHighlighter language="bash" style={ solarizedlight }>
+              {installCommands}
+            </SyntaxHighlighter>
+            <button onClick={() => copyToClipboard(installCommands)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+              Copy
+            </button>
+        </div>
       </div>
-
-      <div>
-        <hr></hr>
-        <h2>Create read.txt</h2>
-        <p>For our example, create a text file in your IDE named <strong>read.txt</strong> and copy the text below:</p>
-        <p>This is the text that will get analyzed later.</p>
-        <button onClick={toggleCollapseText} style={{ marginTop: '20px', cursor: 'pointer' }}>
-          {isOpenText ? 'Hide' : 'Show'} Text
+      <hr></hr>
+      <div className="section-divider">
+        <h2 className="subheading">Create read.txt</h2>
+        <p className="description">For our example, create a text file in your IDE named <strong>read.txt</strong> and copy the text below:</p>
+        <p className="description">This is the text that will get analyzed later.</p>
+        <button onClick={toggleCollapseText} className="toggle-button" style={{ marginTop: '20px', cursor: 'pointer' }}>
+          {isOpenText ? 'Hide' : 'Show'} read.txt
         </button>
-          {isOpenText && (
-            <div style={{ marginTop: '10px', position: 'relative' }}>
-              <SyntaxHighlighter language="text" style={ solarizedlight }>
-                {readText}
-              </SyntaxHighlighter>
-              <button onClick={() => copyToClipboard(readText)} style={{ position: 'absolute', top: '5px', right: '5px' }}>
-                Copy
-              </button>
-            </div>
-          )}
+        {isOpenText && (
+          <div className="collapsible-content" style={{ marginTop: '10px', position: 'relative' }}>
+            <SyntaxHighlighter language="text" style={ solarizedlight }>
+              { readText }
+            </SyntaxHighlighter>
+            <button onClick={() => copyToClipboard(readText)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+              Copy
+            </button>
+          </div>
+        )}
       </div>
-      <div>
-        <hr></hr>
-        <h2>Create emotions.txt</h2>
-        <p>For our example, create a text file in your IDE named <strong>emotion.txt</strong> and copy the text below:</p>
-        <p>This will be used later to manually connect different words with different emotions.</p>
-        <button onClick={toggleCollapse} style={{ marginTop: '20px', cursor: 'pointer' }}>
-          {isOpen ? 'Hide' : 'Show'} Emotions List
+      <hr></hr>
+      <div className="section-divider">
+        <h2 className="subheading">Create emotions.txt</h2>
+        <p className="description">For our example, create a text file in your IDE named <strong>emotion.txt</strong> and copy the text below:</p>
+        <p className="description">This will be used later to manually connect different words with different emotions.</p>
+        <button onClick={toggleCollapse} className="toggle-button" style={{ marginTop: '20px', cursor: 'pointer' }}>
+          {isOpen ? 'Hide' : 'Show'} emotions.txt
         </button>
         {isOpen && (
-          <div style={{ marginTop: '10px', position: 'relative' }}>
-            <p>Copy and paste the following content into a file named <strong>emotions.txt</strong>:</p>
+          <div className="collapsible-content" style={{ marginTop: '10px', position: 'relative' }}>
             <SyntaxHighlighter language="text" style={ solarizedlight }>
-              {emotionsText}
+              { emotionsText }
             </SyntaxHighlighter>
-            <button onClick={() => copyToClipboard(emotionsText)} style={{ position: 'absolute', top: '5px', right: '5px' }}>
+            <button onClick={() => copyToClipboard(emotionsText)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
               Copy
             </button>
           </div>
