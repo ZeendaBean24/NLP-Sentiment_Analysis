@@ -626,8 +626,9 @@
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
   box-sizing: border-box;
-  border: 5px white solid;
+  border: 5px var(--text) solid;
   border-radius: 50%;
+  color: var(--text);
   overflow: hidden;
   box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
   transform: translatey(0px);
@@ -668,7 +669,6 @@
   width: 75px;
   height: 75px;
   background-color: var(--primary);
-  color: white;
   font-size: 40px;
   border-radius: 50%;
 }
@@ -752,7 +752,7 @@
   height: 150px;
   fill: var(--flame-primary);
   transform: translate(-50%, -50%);
-  animation: flicker 1.5s infinite alternate, glow 1.5s infinite;
+  animation: flicker 1.5s infinite alternate, move 3s infinite ease-in-out, glow 1.5s infinite;
   z-index: 2; /* Ensure the flames are above the stars */
 }
 
@@ -771,6 +771,24 @@
   }
   50% {
     filter: drop-shadow(0 0 20px var(--flame-primary));
+  }
+}
+
+@keyframes move {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  20% {
+    transform: translate(calc(-50% + 2px), calc(-50% - 2px)) scale(1.1);
+  }
+  40% {
+    transform: translate(calc(-50% - 2px), calc(-50% + 2px)) scale(0.9);
+  }
+  60% {
+    transform: translate(calc(-50% + 1px), calc(-50% + 3px)) scale(1.05);
+  }
+  80% {
+    transform: translate(calc(-50% - 1px), calc(-50% - 3px)) scale(0.95);
   }
 }
 
