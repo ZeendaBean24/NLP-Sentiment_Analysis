@@ -36,7 +36,29 @@ function NLPPathway() {
     setIsPageOneThreeDone(pageOneThreeDone);
   }, []);
 
+  const [isPageTwoDone, setIsPageTwoDone] = useState(false);
+
+  useEffect(() => {
+    const pageTwoDone = localStorage.getItem('page2-done') === 'true';
+    setIsPageTwoDone(pageTwoDone);
+  }, []);
+
+  const [isPageTwoOneDone, setIsPageTwoOneDone] = useState(false);
+
+  useEffect(() => {
+    const pageTwoOneDone = localStorage.getItem('page2.1-done') === 'true';
+    setIsPageTwoOneDone(pageTwoOneDone);
+  }, []);
+
+  const [isPageTwoTwoDone, setIsPageTwoTwoDone] = useState(false);
+
+  useEffect(() => {
+    const pageTwoTwoDone = localStorage.getItem('page2.2-done') === 'true';
+    setIsPageTwoTwoDone(pageTwoTwoDone);
+  }, []);
+
   const allNNodesDone = isPageOneDone && isPageOneOneDone && isPageOneTwoDone && isPageOneThreeDone;
+  const allLNodesDone = isPageTwoDone && isPageTwoOneDone && isPageTwoTwoDone;
 
   return (
     <div>
@@ -57,9 +79,9 @@ function NLPPathway() {
         <div className="letter n">N</div>
         
         {/* L Nodes */}
-        <div className="node main-node l1" onClick={() => handleNavigate('/l2')}>2</div>
-        <div className="node minor-node l2" onClick={() => handleNavigate('/l2.1')}>2.1</div>
-        <div className="node minor-node l3" onClick={() => handleNavigate('/l2.2')}>2.2</div>
+        <div className={`node main-node l1 ${isPageTwoDone ? 'done' : ''}`} onClick={() => handleNavigate('/n2')}>2</div>
+        <div className={`node minor-node l2 ${isPageTwoOneDone ? 'done' : ''}`} onClick={() => handleNavigate('/n2.1')}>2.1</div>
+        <div className={`node minor-node l3 ${isPageTwoTwoDone ? 'done' : ''}`} onClick={() => handleNavigate('/n2.2')}>2.2</div>
         <div className="letter l">L</div>
         
         {/* P Nodes */}
@@ -85,14 +107,18 @@ function NLPPathway() {
             </svg>
           </>
         )}
-        
+
+        {allLNodesDone && (
+          <>
             <svg class="fuel l" viewBox="0 0 64 64">
               <path d="M32 64c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z"/>
               <path d="M42 64c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z"/>
               <path d="M22 64c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z"/>
               <path d="M32 54c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z" fill="var(--flame-secondary)"/>
             </svg>
-
+          </>
+        )}
+          
             <svg class="fuel p" viewBox="0 0 64 64">
               <path d="M32 64c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z"/>
               <path d="M42 64c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z"/>
