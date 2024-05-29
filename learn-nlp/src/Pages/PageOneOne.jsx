@@ -59,7 +59,7 @@ function PageOneOne() {
           <h2 className="subheading">Importing and Initializing Stop Words</h2>
           <p className="description">We import the stopwords module and initialize a list to store the words that matter.</p>
           <div className="code-container" style={{ position: 'relative' }}>
-            <SyntaxHighlighter language="bash" style={ solarizedlight }>
+            <SyntaxHighlighter language="python" style={ solarizedlight }>
               {snippet1}
             </SyntaxHighlighter>
             <button onClick={() => copyToClipboard(snippet1)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
@@ -71,7 +71,7 @@ function PageOneOne() {
         <h2 className="subheading">Filtering Out Stop Words</h2>
         <p className="description">We loop through the tokenized words and only keep those that are not stop words, ensuring our list contains meaningful words.</p>
         <div className="code-container" style={{ position: 'relative' }}>
-            <SyntaxHighlighter language="bash" style={ solarizedlight }>
+            <SyntaxHighlighter language="python" style={ solarizedlight }>
               {snippet2}
             </SyntaxHighlighter>
             <button onClick={() => copyToClipboard(snippet2)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>

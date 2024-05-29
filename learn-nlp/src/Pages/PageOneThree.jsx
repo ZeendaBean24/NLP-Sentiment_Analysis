@@ -187,7 +187,7 @@ function PageOneThree() {
           <h2 className="subheading">Analyzing Sentiment</h2>
           <p className="description">We use a sentiment analysis tool to determine whether the text is overall positive, negative, or neutral.</p>
           <div className="code-container" style={{ position: 'relative' }}>
-            <SyntaxHighlighter language="bash" style={ solarizedlight }>
+            <SyntaxHighlighter language="python" style={ solarizedlight }>
               {snippet1}
             </SyntaxHighlighter>
             <button onClick={() => copyToClipboard(snippet1)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
@@ -199,7 +199,7 @@ function PageOneThree() {
         <h2 className="subheading">Visualizing the Results</h2>
         <p className="description">We create a bar chart to visualize the count of each sentiment, making it easier to understand the emotional tone of the text. It should have also saved an image of the graph called <strong>graph.png</strong> in your current directory. Check it out!</p>
         <div className="code-container" style={{ position: 'relative' }}>
-            <SyntaxHighlighter language="bash" style={ solarizedlight }>
+            <SyntaxHighlighter language="python" style={ solarizedlight }>
               {snippet2}
             </SyntaxHighlighter>
             <button onClick={() => copyToClipboard(snippet2)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>

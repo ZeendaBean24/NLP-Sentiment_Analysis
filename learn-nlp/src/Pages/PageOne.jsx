@@ -669,7 +669,7 @@ function PageOne() {
         <h2 className="subheading">Basic NLP Technique 1: Reading Text and Converting to Lowercase</h2>
         <p className="description">We read the text from a file and convert it to lowercase to ensure consistency. This means that 'Apple' and 'apple' will be treated as the same word.</p>
         <div className="code-container" style={{ position: 'relative' }}>
-          <SyntaxHighlighter language="bash" style={ solarizedlight }>
+          <SyntaxHighlighter language="python" style={ solarizedlight }>
             {snippet1}
           </SyntaxHighlighter>
           <button onClick={() => copyToClipboard(snippet1)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
@@ -681,7 +681,7 @@ function PageOne() {
         <h2 className="subheading">Basic NLP Technique 2: Removing Punctuation</h2>
         <p className="description">Removing punctuation helps in focusing on the words themselves, making further analysis more straightforward.</p>
         <div className="code-container" style={{ position: 'relative' }}>
-          <SyntaxHighlighter language="bash" style={ solarizedlight }>
+          <SyntaxHighlighter language="python" style={ solarizedlight }>
             {snippet2}
           </SyntaxHighlighter>
           <button onClick={() => copyToClipboard(snippet2)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
@@ -693,7 +693,7 @@ function PageOne() {
         <h2 className="subheading">Basic NLP Technique 3: Tokenizing the Text into Words</h2>
         <p className="description">Tokenization breaks down the cleaned text into individual words, which are the building blocks for further analysis.</p>
         <div className="code-container" style={{ position: 'relative' }}>
-          <SyntaxHighlighter language="bash" style={ solarizedlight }>
+          <SyntaxHighlighter language="python" style={ solarizedlight }>
             {snippet3}
           </SyntaxHighlighter>
           <button onClick={() => copyToClipboard(snippet3)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>

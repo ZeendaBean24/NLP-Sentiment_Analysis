@@ -68,7 +68,7 @@ function PageOneTwo() {
           <h2 className="subheading">Initializing and Reading the Emotion File</h2>
           <p className="description">We read the emotion dictionary and clean each line to prepare for comparison.</p>
           <div className="code-container" style={{ position: 'relative' }}>
-            <SyntaxHighlighter language="bash" style={ solarizedlight }>
+            <SyntaxHighlighter language="python" style={ solarizedlight }>
               {snippet1}
             </SyntaxHighlighter>
             <button onClick={() => copyToClipboard(snippet1)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
@@ -80,7 +80,7 @@ function PageOneTwo() {
         <h2 className="subheading">Matching Words with Emotions</h2>
         <p className="description">We match each word with its corresponding emotion and count how many times each emotion appears.</p>
         <div className="code-container" style={{ position: 'relative' }}>
-            <SyntaxHighlighter language="bash" style={ solarizedlight }>
+            <SyntaxHighlighter language="python" style={ solarizedlight }>
               {snippet2}
             </SyntaxHighlighter>
             <button onClick={() => copyToClipboard(snippet2)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
