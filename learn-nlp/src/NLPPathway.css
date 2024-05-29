@@ -756,6 +756,7 @@
 
 
 .fuel {
+  display: none;
   position: absolute;
   width: auto;
   height: 150px;
@@ -763,6 +764,13 @@
   transform: translate(-50%, -50%);
   animation: flicker 1.5s infinite alternate, move 3s infinite ease-in-out, glow 1.5s infinite;
   z-index: 2; /* Ensure the flames are above the stars */
+}
+
+.fuel.n,
+.fuel.l,
+.fuel.p,
+.fuel.ex {
+  display: block; /* Show the flames if all nodes are done */
 }
 
 @keyframes flicker {
