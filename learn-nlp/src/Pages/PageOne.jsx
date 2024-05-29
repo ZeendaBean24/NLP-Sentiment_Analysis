@@ -606,9 +606,9 @@ function PageOne() {
       <h1 className="page-title">1 - NLP Setup & Introduction</h1>
         <hr></hr>
       <div className="section-divider">
-        <p className="description">Natural language processing, or NLP, combines computational linguistics—rule-based modeling of human language—with statistical and machine learning models to enable computers and digital devices to recognize, understand and generate text and speech. (Source: IBM) For our case, we will be focused on <strong>text-based NLP</strong> and deal with <strong>Sentiment Analysis</strong>.</p>
-        <p className="description">If this is a foreign concept to you: DO NOT WORRY! These series of modules will guide you to become an NLP expert.</p>
-        <p className="description">This first module will introduce you to basic NLP techniques. You will learn to read text from a file, convert it to lowercase, and remove punctuation. This is important because it standardizes the text, making it easier to analyze later on. Cleaned and standardized text ensures that words are consistently recognized, regardless of their original formatting.</p>
+        <p className="intro">Natural language processing, or NLP, combines computational linguistics—rule-based modeling of human language—with statistical and machine learning models to enable computers and digital devices to recognize, understand and generate text and speech. (Source: IBM) For our case, we will be focused on <strong>text-based NLP</strong> and deal with <strong>Sentiment Analysis</strong>.</p>
+        <p className="intro">If this is a foreign concept to you: DO NOT WORRY! These series of modules will guide you to become an NLP expert.</p>
+        <p className="intro">This first module will introduce you to basic NLP techniques. You will learn to read text from a file, convert it to lowercase, and remove punctuation. This is important because it standardizes the text, making it easier to analyze later on. Cleaned and standardized text ensures that words are consistently recognized, regardless of their original formatting.</p>
       </div>
       <hr></hr>  
         <div className="section-divider">

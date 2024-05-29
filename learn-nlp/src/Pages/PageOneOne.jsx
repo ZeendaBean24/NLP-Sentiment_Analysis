@@ -40,11 +40,10 @@ function PageOneOne() {
 
   return (
     <div className="page">
-      <h1 className="heading">1.1 - What is NLP? (Setup, Installation) </h1>
+      <h1 className="page-title">1.1 - Removing Stop Words</h1>
         <hr></hr>
       <div className="section-divider">
-        <p className="description">Natural language processing, or NLP, combines computational linguistics—rule-based modeling of human language—with statistical and machine learning models to enable computers and digital devices to recognize, understand and generate text and speech. (Source: IBM) For our case, we will be focused on <strong>text-based NLP</strong> and deal with <strong>Sentiment Analysis</strong>.</p>
-        <p className="description">If this is a foreign concept to you: DO NOT WORRY! These series of modules will guide you to become an NLP expert.</p>
+        <p className="intro">In this part, we filter out common words like 'and' and 'the', known as stop words. This is important because stop words do not carry significant meaning and can clutter our analysis. Removing them allows us to focus on the meaningful words.</p>
       </div>
       <hr></hr>  
         <div className="section-divider">
