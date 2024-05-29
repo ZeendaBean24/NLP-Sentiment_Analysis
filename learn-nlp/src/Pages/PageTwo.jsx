@@ -64,14 +64,14 @@ function PageTwo() {
 
   const snippet2 = `
   def get_author_book_reviews(name):
-  # Format the author name for the search query
-  author_query = name.replace(" ", "+")
-  URL = f"https://api.nytimes.com/svc/books/v3/reviews.json?author={author_query}&api-key={NYTIMES_BOOKS_API}"
-  response = requests.get(URL)
-  data = response.json()
-  # Extract review summaries, book titles, and authors
-  review_urls = [[result['summary'], result['book_title'], result['book_author']] for result in data['results'] if 'summary' in result and result['summary']]
-  return review_urls
+    # Format the author name for the search query
+    author_query = name.replace(" ", "+")
+    URL = f"https://api.nytimes.com/svc/books/v3/reviews.json?author={author_query}&api-key={NYTIMES_BOOKS_API}"
+    response = requests.get(URL)
+    data = response.json()
+    # Extract review summaries, book titles, and authors
+    review_urls = [[result['summary'], result['book_title'], result['book_author']] for result in data['results'] if 'summary' in result and result['summary']]
+    return review_urls
   `
   return (
     <div className="page">
