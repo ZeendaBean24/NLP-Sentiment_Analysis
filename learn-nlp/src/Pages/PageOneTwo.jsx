@@ -42,9 +42,8 @@ function PageOneTwo() {
   # Opening and reading the emotions file
   with open('emotions.txt', 'r') as file:
       for line in file:
-          clear_line = line.replace("\n", '').replace(",", '').replace("'", '').strip()  # Clean each line
+          clear_line = line.replace("\\n", '').replace(",", '').replace("'", '').strip()  # Clean each line
           word, emotion = clear_line.split(':')  # Split the line into word and emotion
-
   `;
 
   const snippet2 = `
