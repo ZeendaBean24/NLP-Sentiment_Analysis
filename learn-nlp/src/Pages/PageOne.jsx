@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -46,6 +46,27 @@ function PageOne() {
   pip install nltk
   pip install matplotlib
   `;
+
+  const snippet1 = `
+  import string  # For handling punctuation
+  from nltk.tokenize import word_tokenize  # For splitting text into words
+
+  # Reading text from a file
+  text = open('read.txt', encoding='utf-8').read()  # Read the text file
+
+  # Converting text to lowercase
+  lower_case = text.lower()  # Makes the text lowercase
+  `;
+
+  const snippet2 = `
+  # Removing punctuation from the text
+  cleaned_text = lower_case.translate(str.maketrans('', '', string.punctuation))  # Removes punctuation  
+  `
+
+  const snippet3 = `
+  # Tokenizing the text into words
+  tokenized_words = word_tokenize(cleaned_text, "english")  # Splits the text into words  
+  `
 
   const emotionsText = `
     'victimized': 'cheated',
@@ -582,14 +603,16 @@ function PageOne() {
 
   return (
     <div className="page">
-      <h1 className="heading">1 - What is NLP? (Setup, Installation) </h1>
+      <h1 className="page-title">1 - NLP Setup & Introduction</h1>
         <hr></hr>
       <div className="section-divider">
         <p className="description">Natural language processing, or NLP, combines computational linguistics—rule-based modeling of human language—with statistical and machine learning models to enable computers and digital devices to recognize, understand and generate text and speech. (Source: IBM) For our case, we will be focused on <strong>text-based NLP</strong> and deal with <strong>Sentiment Analysis</strong>.</p>
         <p className="description">If this is a foreign concept to you: DO NOT WORRY! These series of modules will guide you to become an NLP expert.</p>
+        <p className="description">This first module will introduce you to basic NLP techniques. You will learn to read text from a file, convert it to lowercase, and remove punctuation. This is important because it standardizes the text, making it easier to analyze later on. Cleaned and standardized text ensures that words are consistently recognized, regardless of their original formatting.</p>
       </div>
       <hr></hr>  
         <div className="section-divider">
+          <h1 className="heading">Setup</h1>
           <h2 className="subheading">Installation Commands</h2>
           <p className="description">Before we start analyzing text, you need to set up your environment by installing some necessary Python libraries. These libraries will help us process and analyze the text.</p>
           <div className="code-container" style={{ position: 'relative' }}>
@@ -600,8 +623,9 @@ function PageOne() {
               Copy
             </button>
         </div>
+        <p className="description"><strong>NLTK</strong> stands for Natural Language Toolkit and is one of the most essential Python modules for NLP.</p>
+        <p className="description"><strong>Matplotlib</strong> is a Python visualization library that can quickly create graphs and charts with data.</p>
       </div>
-      <hr></hr>
       <div className="section-divider">
         <h2 className="subheading">Create read.txt</h2>
         <p className="description">For our example, create a text file in your IDE named <strong>read.txt</strong> and copy the text below:</p>
@@ -620,7 +644,6 @@ function PageOne() {
           </div>
         )}
       </div>
-      <hr></hr>
       <div className="section-divider">
         <h2 className="subheading">Create emotions.txt</h2>
         <p className="description">For our example, create a text file in your IDE named <strong>emotion.txt</strong> and copy the text below:</p>
@@ -638,6 +661,44 @@ function PageOne() {
             </button>
           </div>
         )}
+      </div>
+      <hr></hr>
+      <div className="section-divider">
+        <h1 className="heading">NLP Introduction</h1>
+        <h2 className="subheading">Basic NLP Technique 1: Reading Text and Converting to Lowercase</h2>
+        <p className="description">We read the text from a file and convert it to lowercase to ensure consistency. This means that 'Apple' and 'apple' will be treated as the same word.</p>
+        <div className="code-container" style={{ position: 'relative' }}>
+          <SyntaxHighlighter language="bash" style={ solarizedlight }>
+            {snippet1}
+          </SyntaxHighlighter>
+          <button onClick={() => copyToClipboard(installCommands)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+            Copy
+          </button>
+        </div>
+      </div>
+      <div className="section-divider">
+        <h2 className="subheading">Basic NLP Technique 2: Removing Punctuation</h2>
+        <p className="description">Removing punctuation helps in focusing on the words themselves, making further analysis more straightforward.</p>
+        <div className="code-container" style={{ position: 'relative' }}>
+          <SyntaxHighlighter language="bash" style={ solarizedlight }>
+            {snippet2}
+          </SyntaxHighlighter>
+          <button onClick={() => copyToClipboard(installCommands)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+            Copy
+          </button>
+        </div>
+      </div>
+      <div className="section-divider">
+        <h2 className="subheading">Basic NLP Technique 3: Tokenizing the Text into Words</h2>
+        <p className="description">Tokenization breaks down the cleaned text into individual words, which are the building blocks for further analysis.</p>
+        <div className="code-container" style={{ position: 'relative' }}>
+          <SyntaxHighlighter language="bash" style={ solarizedlight }>
+            {snippet3}
+          </SyntaxHighlighter>
+          <button onClick={() => copyToClipboard(installCommands)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+            Copy
+          </button>
+        </div>
       </div>
       <hr></hr>
       <button className="back-button" style={{ marginTop: '20px', cursor: 'pointer' }} onClick={() => handleNavigate('/')}>
