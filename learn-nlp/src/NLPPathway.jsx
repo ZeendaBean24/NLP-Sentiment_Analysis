@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './NLPPathway.css';
 
 function NLPPathway() {
   let navigate = useNavigate();
+  const [isPageOneThreeDone, setIsPageOneThreeDone] = useState(false);
+
+  useEffect(() => {
+    const pageOneThreeDone = localStorage.getItem('page1.3-done') === 'true';
+    setIsPageOneThreeDone(pageOneThreeDone);
+  }, []);
 
   function handleNavigate(path) {
     navigate(path);
@@ -24,7 +30,7 @@ function NLPPathway() {
         <div className="node main-node n1" onClick={() => handleNavigate('/n1')}>1</div>
         <div className="node minor-node n2" onClick={() => handleNavigate('/n1.1')}>1.1</div>
         <div className="node minor-node n3" onClick={() => handleNavigate('/n1.2')}>1.2</div>
-        <div className="node minor-node n4" onClick={() => handleNavigate('/n1.3')}>1.3</div>
+        <div className={`node minor-node n4 ${isPageOneThreeDone ? 'done' : ''}`} onClick={() => handleNavigate('/n1.3')}>1.3</div>
         <div className="letter n">N</div>
         
         {/* L Nodes */}

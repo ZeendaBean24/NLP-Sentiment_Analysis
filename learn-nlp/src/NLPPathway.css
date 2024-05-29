@@ -29,6 +29,10 @@
   z-index: 2;
 } */
 
+.node.done {
+  background-color: var(--secondary);
+}
+
 .nlp-container {
   margin: 0;
   position: relative;
