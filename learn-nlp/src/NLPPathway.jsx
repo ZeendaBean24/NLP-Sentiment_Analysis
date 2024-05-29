@@ -79,9 +79,9 @@ function NLPPathway() {
         <div className="letter n">N</div>
         
         {/* L Nodes */}
-        <div className={`node main-node l1 ${isPageTwoDone ? 'done' : ''}`} onClick={() => handleNavigate('/n2')}>2</div>
-        <div className={`node minor-node l2 ${isPageTwoOneDone ? 'done' : ''}`} onClick={() => handleNavigate('/n2.1')}>2.1</div>
-        <div className={`node minor-node l3 ${isPageTwoTwoDone ? 'done' : ''}`} onClick={() => handleNavigate('/n2.2')}>2.2</div>
+        <div className={`node main-node l1 ${isPageTwoDone ? 'done' : ''}`} onClick={() => handleNavigate('/l2')}>2</div>
+        <div className={`node minor-node l2 ${isPageTwoOneDone ? 'done' : ''}`} onClick={() => handleNavigate('/l2.1')}>2.1</div>
+        <div className={`node minor-node l3 ${isPageTwoTwoDone ? 'done' : ''}`} onClick={() => handleNavigate('/l2.2')}>2.2</div>
         <div className="letter l">L</div>
         
         {/* P Nodes */}
