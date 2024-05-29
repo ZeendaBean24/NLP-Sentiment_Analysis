@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './styles.css';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -33,11 +33,20 @@ function PageOneOne() {
     }
   };
 
-  const installCommands = `
-  pip install nltk
-  pip install matplotlib
+  const snippet1 = `
+  from nltk.corpus import stopwords  # For removing stop words
+
+  # List to store meaningful words
+  final_words = []
   `;
 
+  const snippet2 = `
+  # Filtering out stop words
+  for word in tokenized_words:
+      if word not in stopwords.words('english'):  # Checks if the word is a stop word
+          final_words.append(word)  # Adds the word to the list if it is not a stop word
+  
+  `
   return (
     <div className="page">
       <h1 className="page-title">1.1 - Removing Stop Words</h1>
@@ -47,28 +56,28 @@ function PageOneOne() {
       </div>
       <hr></hr>  
         <div className="section-divider">
-          <h2 className="subheading">Installation Commands</h2>
-          <p className="description">Before we start analyzing text, you need to set up your environment by installing some necessary Python libraries. These libraries will help us process and analyze the text.</p>
+          <h2 className="subheading">Importing and Initializing Stop Words</h2>
+          <p className="description">We import the stopwords module and initialize a list to store the words that matter.</p>
           <div className="code-container" style={{ position: 'relative' }}>
             <SyntaxHighlighter language="bash" style={ solarizedlight }>
-              {installCommands}
+              {snippet1}
             </SyntaxHighlighter>
-            <button onClick={() => copyToClipboard(installCommands)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+            <button onClick={() => copyToClipboard(snippet1)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
               Copy
             </button>
         </div>
       </div>
-      <hr></hr>
       <div className="section-divider">
-        <h2 className="subheading">Create read.txt</h2>
-        <p className="description">For our example, create a text file in your IDE named <strong>read.txt</strong> and copy the text below:</p>
-        <p className="description">This is the text that will get analyzed later.</p>
-      </div>
-      <hr></hr>
-      <div className="section-divider">
-        <h2 className="subheading">Create emotions.txt</h2>
-        <p className="description">For our example, create a text file in your IDE named <strong>emotion.txt</strong> and copy the text below:</p>
-        <p className="description">This will be used later to manually connect different words with different emotions.</p>
+        <h2 className="subheading">Filtering Out Stop Words</h2>
+        <p className="description">We loop through the tokenized words and only keep those that are not stop words, ensuring our list contains meaningful words.</p>
+        <div className="code-container" style={{ position: 'relative' }}>
+            <SyntaxHighlighter language="bash" style={ solarizedlight }>
+              {snippet2}
+            </SyntaxHighlighter>
+            <button onClick={() => copyToClipboard(snippet2)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+              Copy
+            </button>
+        </div>
       </div>
       <hr></hr>
       <button className="back-button" style={{ marginTop: '20px', cursor: 'pointer' }} onClick={() => handleNavigate('/')}>

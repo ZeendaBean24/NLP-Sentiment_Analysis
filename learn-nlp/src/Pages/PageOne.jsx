@@ -671,7 +671,7 @@ function PageOne() {
           <SyntaxHighlighter language="bash" style={ solarizedlight }>
             {snippet1}
           </SyntaxHighlighter>
-          <button onClick={() => copyToClipboard(installCommands)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+          <button onClick={() => copyToClipboard(snippet1)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
             Copy
           </button>
         </div>
@@ -683,7 +683,7 @@ function PageOne() {
           <SyntaxHighlighter language="bash" style={ solarizedlight }>
             {snippet2}
           </SyntaxHighlighter>
-          <button onClick={() => copyToClipboard(installCommands)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+          <button onClick={() => copyToClipboard(snippet2)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
             Copy
           </button>
         </div>
@@ -695,7 +695,7 @@ function PageOne() {
           <SyntaxHighlighter language="bash" style={ solarizedlight }>
             {snippet3}
           </SyntaxHighlighter>
-          <button onClick={() => copyToClipboard(installCommands)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+          <button onClick={() => copyToClipboard(snippet3)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
             Copy
           </button>
         </div>
