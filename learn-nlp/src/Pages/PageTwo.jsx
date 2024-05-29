@@ -52,27 +52,26 @@ function PageTwo() {
   `
 
   const snippet1 = `
-  from collections import Counter  # For counting occurrences of each emotion
-
-  # List to store detected emotions
-  emotion_list = []
-
-  # Opening and reading the emotions file
-  with open('emotions.txt', 'r') as file:
-      for line in file:
-          clear_line = line.replace("\\n", '').replace(",", '').replace("'", '').strip()  # Clean each line
-          word, emotion = clear_line.split(':')  # Split the line into word and emotion
+  import requests  # For making HTTP requests
+  import os  # For accessing environment variables
+  import json  # For parsing JSON data
+  from dotenv import load_dotenv  # For loading environment variables from a .env file
+  
+  # Load environment variables from .env file
+  load_dotenv()
+  NYTIMES_BOOKS_API = os.getenv("NYTIMES_BOOKS_API")  # Get API key from environment variables  
   `;
 
   const snippet2 = `
-  if word in final_words:  # If the word is in the final_words list
-  emotion_list.append(emotion)  # Add the corresponding emotion to the emotion_list
-
-  # Counting the occurrences of each emotion
-  w = Counter(emotion_list)  # Counts each emotion
-
-  print(f"All emotions detected: {emotion_list}")
-  print(f"Counter: {w}")
+  def get_author_book_reviews(name):
+  # Format the author name for the search query
+  author_query = name.replace(" ", "+")
+  URL = f"https://api.nytimes.com/svc/books/v3/reviews.json?author={author_query}&api-key={NYTIMES_BOOKS_API}"
+  response = requests.get(URL)
+  data = response.json()
+  # Extract review summaries, book titles, and authors
+  review_urls = [[result['summary'], result['book_title'], result['book_author']] for result in data['results'] if 'summary' in result and result['summary']]
+  return review_urls
   `
   return (
     <div className="page">
