@@ -4,16 +4,37 @@ import './NLPPathway.css';
 
 function NLPPathway() {
   let navigate = useNavigate();
+  function handleNavigate(path) {
+    navigate(path);
+  }
+
+  const [isPageOneDone, setIsPageOneDone] = useState(false);
+
+  useEffect(() => {
+    const pageOneDone = localStorage.getItem('page1-done') === 'true';
+    setIsPageOneDone(pageOneDone);
+  }, []);
+
+  const [isPageOneOneDone, setIsPageOneOneDone] = useState(false);
+
+  useEffect(() => {
+    const pageOneOneDone = localStorage.getItem('page1.1-done') === 'true';
+    setIsPageOneOneDone(pageOneOneDone);
+  }, []);
+
+  const [isPageOneTwoDone, setIsPageOneTwoDone] = useState(false);
+
+  useEffect(() => {
+    const pageOneTwoDone = localStorage.getItem('page1.2-done') === 'true';
+    setIsPageOneTwoDone(pageOneTwoDone);
+  }, []);
+
   const [isPageOneThreeDone, setIsPageOneThreeDone] = useState(false);
 
   useEffect(() => {
     const pageOneThreeDone = localStorage.getItem('page1.3-done') === 'true';
     setIsPageOneThreeDone(pageOneThreeDone);
   }, []);
-
-  function handleNavigate(path) {
-    navigate(path);
-  }
 
   return (
     <div>
@@ -27,9 +48,9 @@ function NLPPathway() {
       </div>
       <div className="nlp-container">
         {/* N Nodes */}
-        <div className="node main-node n1" onClick={() => handleNavigate('/n1')}>1</div>
-        <div className="node minor-node n2" onClick={() => handleNavigate('/n1.1')}>1.1</div>
-        <div className="node minor-node n3" onClick={() => handleNavigate('/n1.2')}>1.2</div>
+        <div className={`node main-node n1 ${isPageOneDone ? 'done' : ''}`} onClick={() => handleNavigate('/n1')}>1</div>
+        <div className={`node minor-node n2 ${isPageOneOneDone ? 'done' : ''}`} onClick={() => handleNavigate('/n1.1')}>1.1</div>
+        <div className={`node minor-node n3 ${isPageOneTwoDone ? 'done' : ''}`} onClick={() => handleNavigate('/n1.2')}>1.2</div>
         <div className={`node minor-node n4 ${isPageOneThreeDone ? 'done' : ''}`} onClick={() => handleNavigate('/n1.3')}>1.3</div>
         <div className="letter n">N</div>
         

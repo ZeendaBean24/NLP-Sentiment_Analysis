@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles.css';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -31,6 +31,20 @@ function PageOneOne() {
       }
       document.body.removeChild(textarea);
     }
+  };
+
+  const [isDone, setIsDone] = useState(false);  // State to manage the "Mark as Done" button
+
+  // Retrieve the initial state from localStorage
+  useEffect(() => {
+    const savedState = localStorage.getItem('page1.1-done') === 'true';
+    setIsDone(savedState);
+  }, []);
+
+  const handleDoneToggle = () => {
+    const newState = !isDone;
+    setIsDone(newState);
+    localStorage.setItem('page1.1-done', newState);
   };
 
   const snippet1 = `
@@ -80,9 +94,15 @@ function PageOneOne() {
         </div>
       </div>
       <hr></hr>
-      <button className="back-button" style={{ marginTop: '20px', cursor: 'pointer' }} onClick={() => handleNavigate('/')}>
-        Back
-      </button>
+      <div className="footer">
+        <button className="back-button" style={{ marginTop: '20px', cursor: 'pointer' }} onClick={() => handleNavigate('/')}>
+          Back
+        </button>
+        <label className="isDone" style={{ marginLeft: '10px' }}>
+          <input type="checkbox" checked={isDone} onChange={handleDoneToggle} />
+          Mark as Done
+        </label>
+      </div>
     </div>
   );
 }
