@@ -627,8 +627,8 @@ function PageOne() {
       <hr></hr>  
         <div className="section-divider">
           <h1 className="heading">NLP Setup</h1>
-          <h2 className="subheading">Installation Commands</h2>
           <p className="description">First, create a file in your directory called <strong>main.py</strong>. We will be working in this file for Unit 1.</p>
+          <h2 className="subheading">Installation Commands</h2>
           <p className="description">Before we start analyzing text, you need to set up your environment by installing some necessary Python libraries. These libraries will help us process and analyze the text.</p>
           <div className="code-container" style={{ position: 'relative' }}>
             <SyntaxHighlighter language="bash" style={ solarizedlight }>
