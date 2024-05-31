@@ -37,14 +37,14 @@ function PageThreeTwo() {
 
   // Retrieve the initial state from localStorage
   useEffect(() => {
-    const savedState = localStorage.getItem('page1.2-done') === 'true';
+    const savedState = localStorage.getItem('page3.2-done') === 'true';
     setIsDone(savedState);
   }, []);
 
   const handleDoneToggle = () => {
     const newState = !isDone;
     setIsDone(newState);
-    localStorage.setItem('page1.2-done', newState);
+    localStorage.setItem('page3.2-done', newState);
   };
 
   const snippet1 = `

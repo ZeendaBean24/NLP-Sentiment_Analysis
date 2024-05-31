@@ -57,6 +57,34 @@ function NLPPathway() {
     setIsPageTwoTwoDone(pageTwoTwoDone);
   }, []);
 
+  const [isPageThreeDone, setIsPageThreeDone] = useState(false);
+
+  useEffect(() => {
+    const pageThreeDone = localStorage.getItem('page3-done') === 'true';
+    setIsPageThreeDone(pageThreeDone);
+  }, []);
+
+  const [isPageThreeOneDone, setIsPageThreeOneDone] = useState(false);
+
+  useEffect(() => {
+    const pageThreeOneDone = localStorage.getItem('page3.1-done') === 'true';
+    setIsPageThreeOneDone(pageThreeOneDone);
+  }, []);
+
+  const [isPageThreeTwoDone, setIsPageThreeTwoDone] = useState(false);
+
+  useEffect(() => {
+    const pageThreeTwoDone = localStorage.getItem('page3.2-done') === 'true';
+    setIsPageThreeTwoDone(pageThreeTwoDone);
+  }, []);
+
+  const [isPageThreeThreeDone, setIsPageThreeThreeDone] = useState(false);
+
+  useEffect(() => {
+    const pageThreeThreeDone = localStorage.getItem('page3.3-done') === 'true';
+    setIsPageThreeThreeDone(pageThreeThreeDone);
+  }, []);
+
   const allNNodesDone = isPageOneDone && isPageOneOneDone && isPageOneTwoDone && isPageOneThreeDone;
   const allLNodesDone = isPageTwoDone && isPageTwoOneDone && isPageTwoTwoDone;
   const allPNodesDone = isPageThreeDone && isPageThreeOneDone && isPageThreeTwoDone & isPageThreeThreeDone;
@@ -86,10 +114,10 @@ function NLPPathway() {
         <div className="letter l">L</div>
         
         {/* P Nodes */}
-        <div className="node main-node p1" onClick={() => handleNavigate('/p3')}>3</div>
-        <div className="node minor-node p2" onClick={() => handleNavigate('/p3.1')}>3.1</div>
-        <div className="node minor-node p3" onClick={() => handleNavigate('/p3.2')}>3.2</div>
-        <div className="node minor-node p4" onClick={() => handleNavigate('/p3.3')}>3.3</div>
+        <div className={`node main-node p1 ${isPageThreeDone ? 'done' : ''}`} onClick={() => handleNavigate('/p3')}>3</div>
+        <div className={`node minor-node p2 ${isPageThreeOneDone ? 'done' : ''}`} onClick={() => handleNavigate('/p3.1')}>3.1</div>
+        <div className={`node minor-node p3 ${isPageThreeTwoDone ? 'done' : ''}`} onClick={() => handleNavigate('/p3.2')}>3.2</div>
+        <div className={`node minor-node p4 ${isPageThreeThreeDone ? 'done' : ''}`} onClick={() => handleNavigate('/p3.3')}>3.3</div>
         <div className="letter p">P</div>
         
         {/* ! Nodes */}
@@ -120,19 +148,23 @@ function NLPPathway() {
           </>
         )}
           
-            {/* <svg class="fuel p" viewBox="0 0 64 64">
+        {allPNodesDone && (
+          <>
+            <svg class="fuel p" viewBox="0 0 64 64">
               <path d="M32 64c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z"/>
               <path d="M42 64c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z"/>
               <path d="M22 64c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z"/>
               <path d="M32 54c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z" fill="var(--flame-secondary)"/>
             </svg>
-
-            <svg class="fuel ex" viewBox="0 0 64 64">
+          </>
+        )}
+          
+            {/* <svg class="fuel ex" viewBox="0 0 64 64">
               <path d="M32 64c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z"/>
               <path d="M42 64c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z"/>
               <path d="M22 64c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z"/>
               <path d="M32 54c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z" fill="var(--flame-secondary)"/>
-            </svg> */}
+            </svg>  */}
       </div>
     </div>
   );
