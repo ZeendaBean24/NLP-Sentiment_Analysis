@@ -59,6 +59,7 @@ function NLPPathway() {
 
   const allNNodesDone = isPageOneDone && isPageOneOneDone && isPageOneTwoDone && isPageOneThreeDone;
   const allLNodesDone = isPageTwoDone && isPageTwoOneDone && isPageTwoTwoDone;
+  const allPNodesDone = isPageThreeDone && isPageThreeOneDone && isPageThreeTwoDone & isPageThreeThreeDone;
 
   return (
     <div>
