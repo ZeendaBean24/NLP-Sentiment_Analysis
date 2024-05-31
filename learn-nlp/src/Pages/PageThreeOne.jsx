@@ -48,84 +48,131 @@ function PageThreeOne() {
   };
 
   const snippet1 = `
-  import os  # For accessing environment variables
-  from dotenv import load_dotenv  # For loading environment variables from a .env file
-
-  # Load environment variables from .env file
-  load_dotenv()
-  TMDB_API_KEY = os.getenv("TMDB_API_KEY")  # Get API key from environment variables
+  import requests  # For making HTTP requests
 `;
 
 const snippet2 = `
-  import os  # For accessing environment variables
-  from dotenv import load_dotenv  # For loading environment variables from a .env file
+  def get_movie_review(query):
+    # Replace spaces in the query with '+'
+    query = query.replace(" ", "+")
+    search_url = f"https://api.themoviedb.org/3/search/movie?api_key={TMDB_API_KEY}&query={query}"
 
-  # Load environment variables from .env file
-  load_dotenv()
-  TMDB_API_KEY = os.getenv("TMDB_API_KEY")  # Get API key from environment variables
+    # Make the request to TMDB
+    search_response = requests.get(search_url)
+    search_data = search_response.json()
 `;
 
 const snippet3 = `
-  import os  # For accessing environment variables
-  from dotenv import load_dotenv  # For loading environment variables from a .env file
-
-  # Load environment variables from .env file
-  load_dotenv()
-  TMDB_API_KEY = os.getenv("TMDB_API_KEY")  # Get API key from environment variables
+  if not search_data['results']:
+      print("No results found for the query.")
+      return None
 `;
 
 const snippet4 = `
-  import os  # For accessing environment variables
-  from dotenv import load_dotenv  # For loading environment variables from a .env file
-
-  # Load environment variables from .env file
-  load_dotenv()
-  TMDB_API_KEY = os.getenv("TMDB_API_KEY")  # Get API key from environment variables
+  # Use the first result for the most relevant
+  movie = search_data['results'][0]
+  movie_id = movie['id']
+  movie_title = movie['title']
 `;
 
 const snippet5 = `
-  import os  # For accessing environment variables
-  from dotenv import load_dotenv  # For loading environment variables from a .env file
+  review_url = f"https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key={TMDB_API_KEY}"
+  review_response = requests.get(review_url)
+  review_data = review_response.json()
 
-  # Load environment variables from .env file
-  load_dotenv()
-  TMDB_API_KEY = os.getenv("TMDB_API_KEY")  # Get API key from environment variables
+  if not review_data['results']:
+      print(f"No reviews found for the movie '{movie_title}'.")
+      return None
 `;
 
 const snippet6 = `
-  import os  # For accessing environment variables
-  from dotenv import load_dotenv  # For loading environment variables from a .env file
+  # Select a random review
+  review = random.choice(review_data['results'])
+  review_text = review['content']
 
-  # Load environment variables from .env file
-  load_dotenv()
-  TMDB_API_KEY = os.getenv("TMDB_API_KEY")  # Get API key from environment variables
+  print(f"Movie: {movie_title}")
+  print(f"Review: {review_text}")
+  return review_text
 `;
 
   return (
     <div className="page">
-      <h1 className="page-title">3 - Fetching and Processing Movie Reviews</h1>
+      <h1 className="page-title">3.1 - Fetching Movie Reviews</h1>
       <hr></hr>
       <div className="section-divider">
-          <h1 className="heading">Setting Up the Environment and Getting the API Key</h1>
-          <p className="description">First, create a file in your directory called <strong>movie_reviews.py</strong>. We will be working in this file for Unit 2.</p>
-          <p className="description">Next, go online and search "TMDB". Sign up for an account and navigate to the API section and generate an API key. <strong>This is very important!</strong></p>
-          <p className="description">Finally, in your existing .env file, write: <em>"TMDB_API_KEY=PASTE_API_KEY_HERE"</em></p>
-          <p className="description">This will keep the API key secure and can be easily loaded onto the script.</p>
-      </div>
-      <div className="section-divider">
-        <p className="intro">We need to set up our environment and get an API key from The Movie Database (TMDB). This API key will allow us to fetch movie data.</p>
+        <p className="intro">We will fetch movie reviews from TMDB using the API key. This involves making HTTP requests and parsing JSON data.</p>
       </div>
       <hr></hr>  
-        <div className="section-divider">
-          <h2 className="subheading">Importing Libraries and Loading Environment Variables</h2>
-          <p className="description">We import the necessary libraries and load the API key from the .env file. This is essential for securely using the API key.</p>
-          <div className="code-container" style={{ position: 'relative' }}>
-            <SyntaxHighlighter language="python" style={ solarizedlight }>
-              {snippet1}
-            </SyntaxHighlighter>
-            <button onClick={() => copyToClipboard(snippet1)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
-              Copy
-            </button>
+      <div className="section-divider">
+        <h2 className="subheading">Importing the Requests Library</h2>
+        <p className="description">We import the requests library to handle HTTP requests.</p>
+        <div className="code-container" style={{ position: 'relative' }}>
+          <SyntaxHighlighter language="python" style={ solarizedlight }>
+            {snippet1}
+          </SyntaxHighlighter>
+          <button onClick={() => copyToClipboard(snippet1)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+            Copy
+          </button>
+        </div>
+      </div>
+      <div className="section-divider">
+        <h2 className="subheading">Defining the Function to Fetch Movie Reviews</h2>
+        <p className="description">We define a function to format the movie query, make a request to the TMDB API, and parse the JSON response.</p>
+        <div className="code-container" style={{ position: 'relative' }}>
+          <SyntaxHighlighter language="python" style={ solarizedlight }>
+            {snippet2}
+          </SyntaxHighlighter>
+          <button onClick={() => copyToClipboard(snippet2)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+            Copy
+          </button>
+        </div>
+      </div>
+      <div className="section-divider">
+        <h2 className="subheading">Handling No Results</h2>
+        <p className="description">We check if the search returned any results. If not, we print a message and return None.</p>
+        <div className="code-container" style={{ position: 'relative' }}>
+          <SyntaxHighlighter language="python" style={ solarizedlight }>
+            {snippet3}
+          </SyntaxHighlighter>
+          <button onClick={() => copyToClipboard(snippet3)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+            Copy
+          </button>
+        </div>
+      </div>
+      <div className="section-divider">
+        <h2 className="subheading">IGetting the Movie ID and Title</h2>
+        <p className="description">We extract the movie ID and title from the first search result, assuming it is the most relevant.</p>
+        <div className="code-container" style={{ position: 'relative' }}>
+          <SyntaxHighlighter language="python" style={ solarizedlight }>
+            {snippet4}
+          </SyntaxHighlighter>
+          <button onClick={() => copyToClipboard(snippet4)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+            Copy
+          </button>
+        </div>
+      </div>
+      <div className="section-divider">
+        <h2 className="subheading">Fetching Reviews for the Movie</h2>
+        <p className="description">We make another request to fetch reviews for the movie using its ID and handle cases where no reviews are found.</p>
+        <div className="code-container" style={{ position: 'relative' }}>
+          <SyntaxHighlighter language="python" style={ solarizedlight }>
+            {snippet5}
+          </SyntaxHighlighter>
+          <button onClick={() => copyToClipboard(snippet5)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+            Copy
+          </button>
+        </div>
+      </div>
+      <div className="section-divider">
+        <h2 className="subheading">Selecting and Returning a Random Review</h2>
+        <p className="description">We select a random review from the list of reviews and return its content.</p>
+        <div className="code-container" style={{ position: 'relative' }}>
+          <SyntaxHighlighter language="python" style={ solarizedlight }>
+            {snippet6}
+          </SyntaxHighlighter>
+          <button onClick={() => copyToClipboard(snippet6)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+            Copy
+          </button>
         </div>
       </div>
       <hr></hr>
