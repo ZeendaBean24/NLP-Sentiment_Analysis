@@ -121,6 +121,7 @@ function NLPPathway() {
         <div id="stars2"></div>
         <div id="stars3"></div>
       </div>
+      <p className="small-message">(natural language processing)</p>
       <div className="nlp-container">
         {/* N Nodes */}
         <div className={`node main-node n1 ${isPageOneDone ? 'done' : ''}`} onClick={() => handleNavigate('/n1')}>1</div>
