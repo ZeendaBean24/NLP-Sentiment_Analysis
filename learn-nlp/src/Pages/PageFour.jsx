@@ -99,7 +99,7 @@ const snippet4 = `
               Copy
             </button>
           </div>
-        <p className="description"><strong>Hugging Face</strong> is an open-source database for pre-trained.</p>
+        <p className="description"><strong>Hugging Face</strong> is an open-source database for pre-trained models.</p>
       </div>
       <hr></hr>  
         <div className="section-divider">
