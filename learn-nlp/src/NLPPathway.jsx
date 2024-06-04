@@ -85,9 +85,31 @@ function NLPPathway() {
     setIsPageThreeThreeDone(pageThreeThreeDone);
   }, []);
 
+  const [isPageFourDone, setIsPageFourDone] = useState(false);
+
+  useEffect(() => {
+    const pageFourDone = localStorage.getItem('page4-done') === 'true';
+    setIsPageFourDone(pageFourDone);
+  }, []);
+
+  const [isPageFourOneDone, setIsPageFourOneDone] = useState(false);
+
+  useEffect(() => {
+    const pageFourOneDone = localStorage.getItem('page4.1-done') === 'true';
+    setIsPageFourOneDone(pageFourOneDone);
+  }, []);
+
+  const [isPageFourTwoDone, setIsPageFourTwoDone] = useState(false);
+
+  useEffect(() => {
+    const pageFourTwoDone = localStorage.getItem('page4.2-done') === 'true';
+    setIsPageFourTwoDone(pageFourTwoDone);
+  }, []);
+
   const allNNodesDone = isPageOneDone && isPageOneOneDone && isPageOneTwoDone && isPageOneThreeDone;
   const allLNodesDone = isPageTwoDone && isPageTwoOneDone && isPageTwoTwoDone;
   const allPNodesDone = isPageThreeDone && isPageThreeOneDone && isPageThreeTwoDone & isPageThreeThreeDone;
+  const allExNodesDone = isPageFourDone && isPageFourOneDone && isPageFourTwoDone;
 
   return (
     <div>
@@ -120,10 +142,11 @@ function NLPPathway() {
         <div className={`node minor-node p4 ${isPageThreeThreeDone ? 'done' : ''}`} onClick={() => handleNavigate('/p3.3')}>3.3</div>
         <div className="letter p">P</div>
         
+
         {/* ! Nodes */}
-        <div className="node main-node exclamation1" onClick={() => handleNavigate('/ex4')}>4</div>
-        <div className="node minor-node exclamation2" onClick={() => handleNavigate('/ex4.1')}>4.1</div>
-        <div className="node end-node exclamation3" onClick={() => handleNavigate('/end')}>4.2</div>
+        <div className={`node main-node exclamation1 ${isPageFourDone ? 'done' : ''}`} onClick={() => handleNavigate('/ex4')}>4</div>
+        <div className={`node minor-node exclamation2 ${isPageFourOneDone ? 'done' : ''}`} onClick={() => handleNavigate('/ex4.1')}>4.1</div>
+        <div className={`node end-node exclamation3 ${isPageFourTwoDone ? 'done' : ''}`} onClick={() => handleNavigate('/end')}>4.2</div>
         <div className="letter ex">!</div>
 
         {allNNodesDone && (
@@ -158,13 +181,18 @@ function NLPPathway() {
             </svg>
           </>
         )}
-          
-            {/* <svg class="fuel ex" viewBox="0 0 64 64">
+
+        {allExNodesDone && (
+          <>
+            <svg class="fuel ex" viewBox="0 0 64 64">
               <path d="M32 64c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z"/>
               <path d="M42 64c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z"/>
               <path d="M22 64c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z"/>
               <path d="M32 54c-5-15-10-20-15-25s-10-10-10-15 5-10 10-10 10 5 15 5 10-5 15-5 10 5 10 10-5 10-10 15-10 10-15 25z" fill="var(--flame-secondary)"/>
-            </svg>  */}
+            </svg> 
+          </>
+        )}  
+          
       </div>
     </div>
   );
