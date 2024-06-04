@@ -37,21 +37,21 @@ function PageFourOne() {
 
   // Retrieve the initial state from localStorage
   useEffect(() => {
-    const savedState = localStorage.getItem('page3.1-done') === 'true';
+    const savedState = localStorage.getItem('page4.1-done') === 'true';
     setIsDone(savedState);
   }, []);
 
   const handleDoneToggle = () => {
     const newState = !isDone;
     setIsDone(newState);
-    localStorage.setItem('page3.1-done', newState);
+    localStorage.setItem('page4.1-done', newState);
   };
 
-const installCommands = `
+const snippet1 = `
   from nltk.sentiment.vader import SentimentIntensityAnalyzer  # For sentiment analysis
 `
 
-const snippet1 = `
+const snippet2 = `
   def sentiment_analyse(sentiment_text):
       # Get sentiment scores from VADER
       score = SentimentIntensityAnalyzer().polarity_scores(sentiment_text)
@@ -60,7 +60,7 @@ const snippet1 = `
       pos = score['pos']
 `;
 
-const snippet2 = `
+const snippet3 = `
   # Determine overall sentiment
   if neg > pos:
       print("Overall: Negative Sentiment")
@@ -77,21 +77,11 @@ const snippet2 = `
       <hr></hr>
       <div className="section-divider">
         <p className="intro">We will use the VADER sentiment analysis tool to determine whether the text is positive, negative, or neutral.</p>
-        <h2 className="subheading">Installation Commands</h2>
-          <div className="code-container" style={{ position: 'relative' }}>
-            <SyntaxHighlighter language="bash" style={ solarizedlight }>
-              {installCommands}
-            </SyntaxHighlighter>
-            <button onClick={() => copyToClipboard(installCommands)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
-              Copy
-            </button>
-          </div>
-        <p className="description">Again, we use <strong>NLTK,</strong> a library for sentiment analysis</p>
       </div>
       <hr></hr>  
       <div className="section-divider">
-        <h2 className="subheading">Defining the Function for Sentiment Analysis</h2>
-        <p className="description">We define a function to get sentiment scores from VADER and print the results.</p>
+        <h2 className="subheading">Importing the VADER Sentiment Analyzer</h2>
+        <p className="description">We import the VADER sentiment analyzer from the NLTK library.</p>
         <div className="code-container" style={{ position: 'relative' }}>
           <SyntaxHighlighter language="python" style={ solarizedlight }>
             {snippet1}
@@ -102,13 +92,25 @@ const snippet2 = `
         </div>
       </div>
       <div className="section-divider">
-        <h2 className="subheading">Determining Overall Sentiment</h2>
-        <p className="description">We determine the overall sentiment based on the scores and print the result.</p>
+        <h2 className="subheading">Defining the Function for Sentiment Analysis</h2>
+        <p className="description">We define a function to get sentiment scores from VADER and print the results.</p>
         <div className="code-container" style={{ position: 'relative' }}>
           <SyntaxHighlighter language="python" style={ solarizedlight }>
             {snippet2}
           </SyntaxHighlighter>
           <button onClick={() => copyToClipboard(snippet2)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+            Copy
+          </button>
+        </div>
+      </div>
+      <div className="section-divider">
+        <h2 className="subheading">Determining Overall Sentiment</h2>
+        <p className="description">We determine the overall sentiment based on the scores and print the result.</p>
+        <div className="code-container" style={{ position: 'relative' }}>
+          <SyntaxHighlighter language="python" style={ solarizedlight }>
+            {snippet3}
+          </SyntaxHighlighter>
+          <button onClick={() => copyToClipboard(snippet3)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
             Copy
           </button>
         </div>
