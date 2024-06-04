@@ -281,7 +281,7 @@ function PageTwoTwo() {
       </div>
       <hr></hr>
       <div className="section-divider">
-        <h2 className="subheading">Full Code from Unit 1</h2>
+        <h2 className="subheading">Full Code from Unit 2</h2>
         <button onClick={toggleCollapse} className="toggle-button" style={{ marginTop: '20px', cursor: 'pointer' }}>
           {isOpen ? 'Hide' : 'Show'} book_summary.py
         </button>
