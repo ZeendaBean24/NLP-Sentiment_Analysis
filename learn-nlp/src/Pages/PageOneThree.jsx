@@ -211,7 +211,7 @@ function PageOneThree() {
       <div className="section-divider">
         <h2 className="subheading">Full Code from Unit 1</h2>
         <button onClick={toggleCollapse} className="toggle-button" style={{ marginTop: '20px', cursor: 'pointer' }}>
-          {isOpen ? 'Hide' : 'Show'} Show main.py
+          {isOpen ? 'Hide' : 'Show'} main.py
         </button>
         {isOpen && (
           <div className="collapsible-content" style={{ marginTop: '10px', position: 'relative' }}>

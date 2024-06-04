@@ -637,7 +637,7 @@ function PageOne() {
             <button onClick={() => copyToClipboard(installCommands)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
               Copy
             </button>
-        </div>
+          </div>
         <p className="description"><strong>NLTK</strong> stands for Natural Language Toolkit and is one of the most essential Python modules for NLP.</p>
         <p className="description"><strong>Matplotlib</strong> is a Python visualization library that can quickly create graphs and charts with data.</p>
       </div>

@@ -56,7 +56,7 @@ def analyze_emotions_transformers(text):
     
     # Truncate text to the first 256 tokens (512 is max, to be safe)
     tokenized_text = text.split()
-    truncated_text = ' '.join(tokenized_text[:360])
+    truncated_text = ' '.join(tokenized_text[:300])
     
     emotions = emotion_analyzer(truncated_text)
     
