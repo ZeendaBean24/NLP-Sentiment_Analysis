@@ -5,7 +5,7 @@ import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useNavigate } from 'react-router-dom';
 
 function PageFour() {
-  let navigate = useNavigate();
+  let navigate = useNavigate(); 
 
   function handleNavigate(path) {
     navigate(path);
@@ -48,40 +48,49 @@ function PageFour() {
   };
 
   const installCommands = `
-  import os  # For accessing environment variables
-  from dotenv import load_dotenv  # For loading environment variables from a .env file
-
-  # Load environment variables from .env file
-  load_dotenv()
-  TMDB_API_KEY = os.getenv("TMDB_API_KEY")  # Get API key from environment variables
+  from transformers import pipeline  # For using pre-trained transformer models
 `;
 
   const snippet1 = `
-  import os  # For accessing environment variables
-  from dotenv import load_dotenv  # For loading environment variables from a .env file
+  def analyze_emotions_transformers(text):
+    # Initialize the emotion analysis pipeline
+    emotion_analyzer = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", top_k=None)
+`;
 
-  # Load environment variables from .env file
-  load_dotenv()
-  TMDB_API_KEY = os.getenv("TMDB_API_KEY")  # Get API key from environment variables
+const snippet2 = `
+  # Truncate text to the first 350 tokens (to be safe)
+  tokenized_text = text.split()
+  truncated_text = ' '.join(tokenized_text[:350])
+`;
+
+const snippet3 = `
+  # Get emotions from the analyzer
+  emotions = emotion_analyzer(truncated_text)
+`;
+
+const snippet4 = `
+  # Flatten the results and sum the scores for each emotion
+  emotion_counts = {}
+  for emotion_set in emotions:
+      for emotion in emotion_set:
+          label = emotion['label']
+          score = emotion['score']
+          if label in emotion_counts:
+              emotion_counts[label] += score
+          else:
+              emotion_counts[label] = score
+
+  return emotion_counts
 `;
 
   return (
     <div className="page">
-      <h1 className="page-title">3 - Fetching and Processing Movie Reviews</h1>
+      <h1 className="page-title">4 - Analyzing Emotions Using Transformers</h1>
       <hr></hr>
       <div className="section-divider">
-          <h1 className="heading">Setting Up the Environment and Getting the API Key</h1>
-          <p className="description">First, create a file in your directory called <strong>movie_reviews.py</strong>. We will be working in this file for Unit 2.</p>
-          <p className="description">Next, go online and search "TMDB". Sign up for an account and navigate to the API section and generate an API key. <strong>This is very important!</strong></p>
-          <p className="description">Finally, in your existing .env file, write: <em>"TMDB_API_KEY=PASTE_API_KEY_HERE"</em></p>
-          <p className="description">This will keep the API key secure and can be easily loaded onto the script.</p>
-      </div>
-      <div className="section-divider">
-        <p className="intro">We need to set up our environment and get an API key from The Movie Database (TMDB). This API key will allow us to fetch movie data.</p>
-        <h1 className="heading">NLP Setup</h1>
-          <p className="description">First, create a file in your directory called <strong>main.py</strong>. We will be working in this file for Unit 1.</p>
+        <p className="intro">We will use a pre-trained transformer model to analyze emotions in the text. This will help us understand the emotional tone of the review.</p>
           <h2 className="subheading">Installation Commands</h2>
-          <p className="description">Before we start analyzing text, you need to set up your environment by installing some necessary Python libraries. These libraries will help us process and analyze the text.</p>
+          <p className="description">For this part specifically, we need to import a pre-trained library from Hugging Face</p>
           <div className="code-container" style={{ position: 'relative' }}>
             <SyntaxHighlighter language="bash" style={ solarizedlight }>
               {installCommands}
@@ -90,12 +99,12 @@ function PageFour() {
               Copy
             </button>
           </div>
-        <p className="description"><strong>NLTK</strong> stands for Natural Language Toolkit and is one of the most essential Python modules for NLP.</p>
+        <p className="description"><strong>Hugging Face</strong> is an open-source database for pre-trained.</p>
       </div>
       <hr></hr>  
         <div className="section-divider">
-          <h2 className="subheading">Importing Libraries and Loading Environment Variables</h2>
-          <p className="description">We import the necessary libraries and load the API key from the .env file. This is essential for securely using the API key.</p>
+          <h2 className="subheading">Defining the Function to Analyze Emotions</h2>
+          <p className="description">We define a function to initialize the emotion analysis pipeline using a pre-trained model.</p>
           <div className="code-container" style={{ position: 'relative' }}>
             <SyntaxHighlighter language="python" style={ solarizedlight }>
               {snippet1}
@@ -103,8 +112,44 @@ function PageFour() {
             <button onClick={() => copyToClipboard(snippet1)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
               Copy
             </button>
+          </div>
         </div>
-      </div>
+        <div className="section-divider">
+          <h2 className="subheading">Truncating the Text</h2>
+          <p className="description">We truncate the text to the first 375 tokens to avoid processing very long texts.</p>
+          <div className="code-container" style={{ position: 'relative' }}>
+            <SyntaxHighlighter language="python" style={ solarizedlight }>
+              {snippet2}
+            </SyntaxHighlighter>
+            <button onClick={() => copyToClipboard(snippet2)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+              Copy
+            </button>
+          </div>
+        </div>
+        <div className="section-divider">
+          <h2 className="subheading">Getting Emotions from the Analyzer</h2>
+          <p className="description">We pass the truncated text to the emotion analyzer to get the predicted emotions.</p>
+          <div className="code-container" style={{ position: 'relative' }}>
+            <SyntaxHighlighter language="python" style={ solarizedlight }>
+              {snippet3}
+            </SyntaxHighlighter>
+            <button onClick={() => copyToClipboard(snippet3)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+              Copy
+            </button>
+          </div>
+        </div>
+        <div className="section-divider">
+          <h2 className="subheading">Summing the Scores for Each Emotion</h2>
+          <p className="description">We sum the scores for each emotion to get the final emotion counts.</p>
+          <div className="code-container" style={{ position: 'relative' }}>
+            <SyntaxHighlighter language="python" style={ solarizedlight }>
+              {snippet4}
+            </SyntaxHighlighter>
+            <button onClick={() => copyToClipboard(snippet4)} className="copy-button" style={{ position: 'absolute', top: '5px', right: '5px' }}>
+              Copy
+            </button>
+          </div>
+        </div>
       <hr></hr>
       <div className="footer">
         <button className="back-button" style={{ marginTop: '20px', cursor: 'pointer' }} onClick={() => handleNavigate('/')}>
