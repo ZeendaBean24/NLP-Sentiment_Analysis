@@ -32,7 +32,7 @@ def process_text(text):
 
 def analyze_emotions(final_words):
     emotion_list = []
-    with open('emotions.txt', 'r') as file:
+    with open('Resources/emotions.txt', 'r') as file:
         for line in file:
             clear_line = line.replace("n", '').replace(",", '').replace("'", '').strip()
             word, emotion = clear_line.split(':')

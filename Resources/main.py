@@ -10,7 +10,7 @@ from nltk.corpus import stopwords
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import matplotlib.pyplot as plt
 
-text = open('read.txt', encoding='utf-8').read() # encoding - standard process
+text = open('Resources/read.txt', encoding='utf-8').read() # encoding - standard process
 lower_case = text.lower()
 # print(string.punctuation) - all the punctuation
 cleaned_text = lower_case.translate(str.maketrans('','',string.punctuation)) # maketrans - 3 parameters
@@ -40,7 +40,7 @@ for word in tokenized_words:
 # 3) Finally count each emotion in the emotion list
 
 emotion_list = []
-with open('emotions.txt', 'r') as file:
+with open('Resources/emotions.txt', 'r') as file:
     for line in file:
         clear_line = line.replace("n", '').replace(",", '').replace("'", '').strip() # Replace new lines, quotes, commas with empty characters 'nothing'
         # print(clear_line)
