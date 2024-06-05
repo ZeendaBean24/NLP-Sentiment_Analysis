@@ -140,7 +140,7 @@ const snippet6 = `
         </div>
       </div>
       <div className="section-divider">
-        <h2 className="subheading">IGetting the Movie ID and Title</h2>
+        <h2 className="subheading">Getting the Movie ID and Title</h2>
         <p className="description">We extract the movie ID and title from the first search result, assuming it is the most relevant.</p>
         <div className="code-container" style={{ position: 'relative' }}>
           <SyntaxHighlighter language="python" style={ solarizedlight }>

@@ -136,7 +136,7 @@ const snippet5 = `
         </div>
         <div className="section-divider">
           <h2 className="subheading">Truncating the Text</h2>
-          <p className="description">We truncate the text to the first 375 tokens to avoid processing very long texts.</p>
+          <p className="description">We truncate the text to the first 350 tokens to avoid processing very long texts.</p>
           <div className="code-container" style={{ position: 'relative' }}>
             <SyntaxHighlighter language="python" style={ solarizedlight }>
               {snippet3}
